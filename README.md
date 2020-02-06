@@ -34,11 +34,11 @@ Check out [this example file](sample_output.txt) for sample output.
   - Contribution 1
   - Contribution 2
   - Contribution 3 
-- **Michael Crouse**  - 
+- **Michael Crouse**
   - Contribution 1
   - Contribution 2
   - Contribution 3
-- **Shamus Boulianne**  - 
+- **Shamus Boulianne**
   - Contribution 1
   - Contribution 2
   - Contribution 3
