@@ -58,6 +58,20 @@ function PrintTreeRecursive(node, level) {
   });
 }
 
+  function mapArrayToTree(arr, root) {
+    let parent = root;
+    //for each string in array
+    arr.forEach(txt => {
+      //check if the string exists in the tree
+      let node = parent.children.find(child => {
+        return child.data === txt;
+      });
+      if (node) {
+        parent = node;
+      }
+    });
+  }
+
 class App extends React.Component {
   constructor(props) {
     super(props);
