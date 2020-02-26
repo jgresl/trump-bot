@@ -66,7 +66,7 @@ class App extends React.Component {
 
   componentDidMount() {
     // read the CSV file containing the canned responses and generate the response tree
-    fetch('input.csv')
+    fetch('samplecsv.csv')
     .then(r => r.text())
     .then(text => {
       this.tree = GenerateTree(text);
