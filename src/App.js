@@ -61,7 +61,7 @@ function PrintTreeRecursive(node, level) {
   function Map(arr, root) {
     let outputset = [];
     root.children.forEach(child => {
-      outputset.push(recursiveMap(arr, child));
+      outputset.push(...recursiveMap(arr, child));
     });
     return outputset;
   }
@@ -82,7 +82,7 @@ function PrintTreeRecursive(node, level) {
       if (match) {
         //for each child of node
         node.children.forEach(child => {
-          recursiveMap(arr, child);
+          outputset.push(...recursiveMap(arr, child));
         });
       }
     }
