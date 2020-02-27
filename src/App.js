@@ -116,7 +116,7 @@ class App extends React.Component {
   }
 
   debugMap() {
-    let arr = ['category1', 'topic1', 'category2', 'topic2'];
+    let arr = ['category1', 'topic1', 'sample', 'topic2', 'topic3'];
     console.log(Map(arr, this.tree));
   }
 
