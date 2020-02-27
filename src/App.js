@@ -102,6 +102,7 @@ function PrintTreeRecursive(node, level) {
   }
 
   function stringToArray(txt) {
+    //using 'natural' module for basic NLP. Can be changed to add more functionality later
     let natural = require('natural');
     let tokenizer = new natural.WordTokenizer();
     let arr = tokenizer.tokenize(txt);
