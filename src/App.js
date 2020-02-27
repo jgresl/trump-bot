@@ -95,11 +95,30 @@ function PrintTreeRecursive(node, level) {
     }
   }
 
+  //randomly choose an element of an array
+  function randomElement(arr) {
+    let rand = Math.floor(Math.random()*arr.length)
+    return arr[rand];
+  }
+
+  function stringToArray(txt) {
+    let natural = require('natural');
+    let tokenizer = new natural.WordTokenizer();
+    let arr = tokenizer.tokenize(txt);
+    return arr;
+  }
+
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      input: '',
+      useroutput: '',
+      botoutput: ''
+  };
     this.debugResponseTree = this.debugResponseTree.bind(this);
-    this.debugMap = this.debugMap.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -115,9 +134,25 @@ class App extends React.Component {
     PrintTree(this.tree);
   }
 
-  debugMap() {
-    let arr = ['category1', 'topic1', 'sample', 'topic2', 'topic3'];
-    console.log(Map(arr, this.tree));
+  handleChange(event) {
+      this.setState({input: event.target.value});
+    }
+
+  handleSubmit(event) {
+    //on form submission display what the user typed and the result of mapping that input on the tree
+    event.preventDefault();
+    let arr = stringToArray(this.state.input);
+    this.setState({
+      input: '',
+      useroutput: this.state.input
+    }, () =>
+      console.log("User: " + this.state.useroutput)
+    );
+    this.setState({
+      botoutput: randomElement(Map(arr, this.tree))
+    }, () =>
+      console.log("Trump: " + this.state.botoutput)
+    );
   }
 
   render() {
@@ -125,7 +160,15 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <button onClick={this.debugResponseTree}>Print the tree!</button>
-          <button onClick={this.debugMap}>Should return outputs 1,2,4</button>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Say something:
+              <input type="text" value={this.state.input} onChange={this.handleChange} />
+            </label>
+            <input type="submit" value="Submit" />
+          </form>
+          <p>{"Input: " + this.state.useroutput}</p>
+          <p>{"Output: " + this.state.botoutput}</p>
         </header>
       </div>
     );
