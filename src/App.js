@@ -58,10 +58,68 @@ function PrintTreeRecursive(node, level) {
   });
 }
 
+  function Map(arr, root) {
+    let outputset = [];
+    root.children.forEach(child => {
+      outputset.push(...recursiveMap(arr, child));
+    });
+    return outputset;
+  }
+
+  // recursive helper method for Map
+  function recursiveMap(arr, node) {
+    let outputset = [];
+    //if node is a leaf return node.data to output set
+    if (isLeaf(node)) {
+      outputset.push(node.data);
+    //if node is not a leaf proceed to mapping
+    } else {
+      //find if node.data matches a value in the array
+      let match = arr.find(txt => {
+        return txt === node.data;
+      });
+      //if a match is found recursively map from each child of node
+      if (match) {
+        //for each child of node
+        node.children.forEach(child => {
+          outputset.push(...recursiveMap(arr, child));
+        });
+      }
+    }
+    return outputset;
+  }
+
+  function isLeaf(node) {
+    if (!node.children.length) {
+      return true;
+    }
+  }
+
+  //randomly choose an element of an array
+  function randomElement(arr) {
+    let rand = Math.floor(Math.random()*arr.length)
+    return arr[rand];
+  }
+
+  function stringToArray(txt) {
+    //using 'natural' module for basic NLP. Can be changed to add more functionality later
+    let natural = require('natural');
+    let tokenizer = new natural.WordTokenizer();
+    let arr = tokenizer.tokenize(txt);
+    return arr;
+  }
+
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      input: '',
+      useroutput: '',
+      botoutput: ''
+  };
     this.debugResponseTree = this.debugResponseTree.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -77,11 +135,41 @@ class App extends React.Component {
     PrintTree(this.tree);
   }
 
+  handleChange(event) {
+      this.setState({input: event.target.value});
+    }
+
+  handleSubmit(event) {
+    //on form submission display what the user typed and the result of mapping that input on the tree
+    event.preventDefault();
+    let arr = stringToArray(this.state.input);
+    this.setState({
+      input: '',
+      useroutput: this.state.input
+    }, () =>
+      console.log("User: " + this.state.useroutput)
+    );
+    this.setState({
+      botoutput: randomElement(Map(arr, this.tree))
+    }, () =>
+      console.log("Trump: " + this.state.botoutput)
+    );
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <button onClick={this.debugResponseTree}>Print the tree!</button>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Say something:
+              <input type="text" value={this.state.input} onChange={this.handleChange} />
+            </label>
+            <input type="submit" value="Submit" />
+          </form>
+          <p>{"Input: " + this.state.useroutput}</p>
+          <p>{"Output: " + this.state.botoutput}</p>
         </header>
       </div>
     );
