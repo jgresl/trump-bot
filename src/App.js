@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  readString
-} from 'react-papaparse'
+import { readString } from 'react-papaparse'
 import './App.css';
 
 class TreeNode {
@@ -18,9 +16,9 @@ function GenerateTree(inputText) {
   // for each line in the csv input, read as array of strings
   readString(inputText).data.forEach(arr => {
     //handles blank lines
-    if (arr[0] == "") {
-      return;
-    }
+    // if (arr[0] == "") {
+    //   return;
+    // }
     let parent = root;
 
     // for each string in each subarray, add to tree
@@ -53,11 +51,11 @@ function PrintTree(root) {
 
 // recursive helper method for PrintTree
 function PrintTreeRecursive(node, level) {
-  let spaces = "";
+  let indent = "";
   for (let i = 0; i < level; i++) {
-    spaces += ".";
+    indent += ".";
   }
-  console.log(spaces + node.data);
+  console.log(indent + node.data);
   node.children.forEach(child => {
     PrintTreeRecursive(child, level + 1);
   });
@@ -180,42 +178,21 @@ class App extends React.Component {
   }
 
   render() {
-    return ( <
-      div className = "App" >
-      <
-      header className = "App-header" >
-      <
-      button onClick = {
-        this.debugResponseTree
-      } > Print the tree! < /button> <
-      form onSubmit = {
-        this.handleSubmit
-      } >
-      <
-      label >
-      Say something:
-      <
-      input type = "text"
-      value = {
-        this.state.input
-      }
-      onChange = {
-        this.handleChange
-      }
-      /> < /
-      label > <
-      input type = "submit"
-      value = "Submit" / >
-      <
-      /form> <
-      p > {
-        "Input: " + this.state.useroutput
-      } < /p> <
-      p > {
-        "Output: " + this.state.botoutput
-      } < /p> < /
-      header > <
-      /div>
+    return (
+      <div className="App">
+        <header className="App-header">
+          <button onClick={this.debugResponseTree}>Print the tree!</button>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Say something:
+              <input type="text" value={this.state.input} onChange={this.handleChange} />
+            </label>
+            <input type="submit" value="Submit" />
+          </form>
+          <p>{"Input: " + this.state.useroutput}</p>
+          <p>{"Output: " + this.state.botoutput}</p>
+        </header>
+      </div>
     );
   }
 }
