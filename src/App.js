@@ -1,5 +1,7 @@
 import React from 'react';
-import { readString } from 'react-papaparse'
+import {
+  readString
+} from 'react-papaparse'
 import './App.css';
 
 class TreeNode {
@@ -15,6 +17,10 @@ function GenerateTree(inputText) {
 
   // for each line in the csv input, read as array of strings
   readString(inputText).data.forEach(arr => {
+    //handles blank lines
+    if (arr[0] == "") {
+      return;
+    }
     let parent = root;
 
     // for each string in each subarray, add to tree
@@ -48,66 +54,81 @@ function PrintTree(root) {
 // recursive helper method for PrintTree
 function PrintTreeRecursive(node, level) {
   let spaces = "";
-  for (let i = 0; i < level; i++)
-  {
+  for (let i = 0; i < level; i++) {
     spaces += ".";
   }
   console.log(spaces + node.data);
   node.children.forEach(child => {
-    PrintTreeRecursive(child, level+1);
+    PrintTreeRecursive(child, level + 1);
   });
 }
 
-  function Map(arr, root) {
-    let outputset = [];
-    root.children.forEach(child => {
-      outputset.push(...recursiveMap(arr, child));
-    });
-    return outputset;
-  }
+function Map(arr, root) {
+  let outputset = [];
+  root.children.forEach(child => {
+    outputset.push(...recursiveMap(arr, child));
+  });
+  console.log(outputset);
+  return outputset;
+}
 
-  // recursive helper method for Map
-  function recursiveMap(arr, node) {
-    let outputset = [];
-    //if node is a leaf return node.data to output set
-    if (isLeaf(node)) {
-      outputset.push(node.data);
+// recursive helper method for Map
+function recursiveMap(arr, node) {
+  let outputset = [];
+  //if node is a leaf return node.data to output set
+  if (isLeaf(node)) {
+    outputset.push(node.data);
     //if node is not a leaf proceed to mapping
-    } else {
-      //find if node.data matches a value in the array
-      let match = arr.find(txt => {
-        return txt === node.data;
+  } else {
+    //find if node.data matches a value in the array
+    let match = arr.find(txt => {
+      return txt === node.data;
+    });
+    //if a match is found recursively map from each child of node
+    if (match) {
+      //for each child of node
+      node.children.forEach(child => {
+        outputset.push(...recursiveMap(arr, child));
       });
-      //if a match is found recursively map from each child of node
-      if (match) {
-        //for each child of node
-        node.children.forEach(child => {
-          outputset.push(...recursiveMap(arr, child));
-        });
-      }
-    }
-    return outputset;
-  }
-
-  function isLeaf(node) {
-    if (!node.children.length) {
-      return true;
     }
   }
+  return outputset;
+}
 
-  //randomly choose an element of an array
-  function randomElement(arr) {
-    let rand = Math.floor(Math.random()*arr.length)
-    return arr[rand];
+function isLeaf(node) {
+  if (!node.children.length) {
+    return true;
   }
+}
 
-  function stringToArray(txt) {
-    //using 'natural' module for basic NLP. Can be changed to add more functionality later
-    let natural = require('natural');
-    let tokenizer = new natural.WordTokenizer();
-    let arr = tokenizer.tokenize(txt);
-    return arr;
+//randomly choose an element of an array
+function randomElement(arr) {
+  let rand = Math.floor(Math.random() * arr.length)
+  return arr[rand];
+}
+
+function stringToArray(txt) {
+  //using 'natural' module for basic NLP. Can be changed to add more functionality later
+  let natural = require('natural');
+  let tokenizer = new natural.WordTokenizer();
+  let arr = tokenizer.tokenize(txt.toLowerCase());
+  if (isQuestion(txt)) {
+    arr.push("Q");
+  } else {
+    arr.push("S");
   }
+  return arr;
+}
+
+// currently only checks for a question mark. should be updated to check if first word is a question starter
+function isQuestion(txt) {
+  if (txt.charAt(txt.length - 1) === '?') {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 
 class App extends React.Component {
   constructor(props) {
@@ -116,7 +137,7 @@ class App extends React.Component {
       input: '',
       useroutput: '',
       botoutput: ''
-  };
+    };
     this.debugResponseTree = this.debugResponseTree.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -125,10 +146,10 @@ class App extends React.Component {
   componentDidMount() {
     // read the CSV file containing the canned responses and generate the response tree
     fetch('kidconvo.csv')
-    .then(r => r.text())
-    .then(text => {
-      this.tree = GenerateTree(text);
-    });
+      .then(r => r.text())
+      .then(text => {
+        this.tree = GenerateTree(text);
+      });
   }
 
   debugResponseTree() {
@@ -136,42 +157,65 @@ class App extends React.Component {
   }
 
   handleChange(event) {
-      this.setState({input: event.target.value});
-    }
+    this.setState({
+      input: event.target.value
+    });
+  }
 
   handleSubmit(event) {
     //on form submission display what the user typed and the result of mapping that input on the tree
     event.preventDefault();
     let arr = stringToArray(this.state.input);
     this.setState({
-      input: '',
-      useroutput: this.state.input
-    }, () =>
+        input: '',
+        useroutput: this.state.input
+      }, () =>
       console.log("User: " + this.state.useroutput)
     );
     this.setState({
-      botoutput: randomElement(Map(arr, this.tree))
-    }, () =>
+        botoutput: randomElement(Map(arr, this.tree))
+      }, () =>
       console.log("Trump: " + this.state.botoutput)
     );
   }
 
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <button onClick={this.debugResponseTree}>Print the tree!</button>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Say something:
-              <input type="text" value={this.state.input} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
-          <p>{"Input: " + this.state.useroutput}</p>
-          <p>{"Output: " + this.state.botoutput}</p>
-        </header>
-      </div>
+    return ( <
+      div className = "App" >
+      <
+      header className = "App-header" >
+      <
+      button onClick = {
+        this.debugResponseTree
+      } > Print the tree! < /button> <
+      form onSubmit = {
+        this.handleSubmit
+      } >
+      <
+      label >
+      Say something:
+      <
+      input type = "text"
+      value = {
+        this.state.input
+      }
+      onChange = {
+        this.handleChange
+      }
+      /> < /
+      label > <
+      input type = "submit"
+      value = "Submit" / >
+      <
+      /form> <
+      p > {
+        "Input: " + this.state.useroutput
+      } < /p> <
+      p > {
+        "Output: " + this.state.botoutput
+      } < /p> < /
+      header > <
+      /div>
     );
   }
 }
