@@ -1,11 +1,20 @@
 import React from 'react';
-import { readString } from 'react-papaparse'
+import { readString } from 'react-papaparse';
+import { WordTokenizer } from 'natural';
 import './App.css';
 
 class TreeNode {
   constructor(data) {
     this.data = data;
     this.children = [];
+    this.getSubTree = this.getSubTree.bind(this);
+  }
+
+  // returns the first child with matching data
+  getSubTree(data) {
+    return this.children.find(child => {
+      return child.data === data;
+    });
   }
 }
 
@@ -61,80 +70,64 @@ function PrintTreeRecursive(node, level) {
   });
 }
 
-function Map(arr, root) {
-  let outputset = [];
-  root.children.forEach(child => {
-    outputset.push(...recursiveMap(arr, child));
-  });
-  console.log(outputset);
-  return outputset;
-}
+function GetResponse(inputText, responseTree) {
+  let responseList = [];
 
-// recursive helper method for Map
-function recursiveMap(arr, node) {
-  let outputset = [];
-  //if node is a leaf return node.data to output set
-  if (isLeaf(node)) {
-    outputset.push(node.data);
-    //if node is not a leaf proceed to mapping
-  } else {
-    //find if node.data matches a value in the array
-    let match = arr.find(txt => {
-      return txt === node.data;
-    });
-    //if a match is found recursively map from each child of node
-    if (match) {
-      //for each child of node
-      node.children.forEach(child => {
-        outputset.push(...recursiveMap(arr, child));
+  // determine the type of input (question or statement)
+  let category = IsQuestion(inputText) ? "Q" : "S";
+  let categoryTree = responseTree.getSubTree(category);
+
+  // get each matched topic in the response tree and
+  // add all the possible responses to the response list
+  let inputArray = TokenizeString(inputText);
+  inputArray.forEach(input => {
+    let topicTree = categoryTree.getSubTree(input);
+    if (topicTree !== undefined) {
+      topicTree.children.forEach(topic => {
+        responseList.push(topic.data);
       });
     }
+  });
+
+  // add generic responses if no topics matched
+  if (responseList.length === 0) {
+    let topicTree = categoryTree.getSubTree("");
+    topicTree.children.forEach(topic => {
+      responseList.push(topic.data);
+    });
   }
-  return outputset;
+
+  // return a random response from the possible responses
+  return GetRandomElement(responseList);
 }
 
-function isLeaf(node) {
-  if (!node.children.length) {
-    return true;
-  }
-}
-
-//randomly choose an element of an array
-function randomElement(arr) {
+// returns a random element from an array
+function GetRandomElement(arr) {
   let rand = Math.floor(Math.random() * arr.length)
   return arr[rand];
 }
 
-function stringToArray(txt) {
-  //using 'natural' module for basic NLP. Can be changed to add more functionality later
-  let natural = require('natural');
-  let tokenizer = new natural.WordTokenizer();
-  let arr = tokenizer.tokenize(txt.toLowerCase());
-  if (isQuestion(txt)) {
-    arr.push("Q");
-  } else {
-    arr.push("S");
-  }
-  return arr;
+// split string into a tokenized array of strings
+function TokenizeString(txt) {
+  // currently uses 'natural' library
+  let tokenizer = new WordTokenizer();
+  let tokenArray = tokenizer.tokenize(txt.toLowerCase());
+  return tokenArray;
 }
 
-// currently only checks for a question mark. should be updated to check if first word is a question starter
-function isQuestion(txt) {
-  if (txt.charAt(txt.length - 1) === '?') {
-    return true;
-  } else {
-    return false;
-  }
+// returns whether an input sentence is a question
+// TODO: should be updated to use a library instead
+function IsQuestion(txt) {
+  return txt.charAt(txt.length - 1) === '?';
 }
-
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       input: '',
-      useroutput: '',
-      botoutput: ''
+      question: '',
+      answer: ''
     };
     this.debugResponseTree = this.debugResponseTree.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -161,20 +154,15 @@ class App extends React.Component {
   }
 
   handleSubmit(event) {
-    //on form submission display what the user typed and the result of mapping that input on the tree
     event.preventDefault();
-    let arr = stringToArray(this.state.input);
+
+    // display the user input and the bot response
+    let output = GetResponse(this.state.input, this.tree);
     this.setState({
-        input: '',
-        useroutput: this.state.input
-      }, () =>
-      console.log("User: " + this.state.useroutput)
-    );
-    this.setState({
-        botoutput: randomElement(Map(arr, this.tree))
-      }, () =>
-      console.log("Trump: " + this.state.botoutput)
-    );
+      input: '',
+      question: this.state.input,
+      answer: output
+    });
   }
 
   render() {
@@ -189,8 +177,8 @@ class App extends React.Component {
             </label>
             <input type="submit" value="Submit" />
           </form>
-          <p>{"Input: " + this.state.useroutput}</p>
-          <p>{"Output: " + this.state.botoutput}</p>
+          <p>{"Your Question: " + this.state.question}</p>
+          <p>{"Trump's Answer: " + this.state.answer}</p>
         </header>
       </div>
     );
