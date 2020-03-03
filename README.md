@@ -29,7 +29,7 @@ We used the React framework to build our appication because it is a powerful too
 
   1. Clone the project to a local repository:   `git clone https://github.com/jgresl/cosc310.git`
   2. Navigate to the Java directory: `cd cosc310`
-  3. Start the program: `npm start` _-nodejs must be installed along with the required libraries_
+  3. Start the program: `npm start` _*nodejs must be installed along with the required libraries_
 
 ## Sample Output
 Check out [this example file](testedoutput.txt) for sample output.
