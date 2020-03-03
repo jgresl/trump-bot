@@ -18,7 +18,7 @@ In this application, the user can "communicate" with the US president, Donald Tr
 - [x] Generates a response tree from a prefabricated CSV file
 - [x] Determines if the input is a question or a statement
 - [x] Adds all possible responses to the response list
-- [x] Adds generic responses when no topics are matched
+- [x] Adds generic responses to the repsonse list when no topics are matched
 - [x] Returns a random response from the response list
 - [x] Can handle a conversation with up to 30 unique repsonses
 
