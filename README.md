@@ -43,7 +43,7 @@ Check out [this example file](testedoutput.txt) for sample output.
 - **Jonathan Gresl**
   - Setup GitHub repository and invited group members
   - Created README template in GitHub
-  - Setup Gantt chart in Google Drive and invited group members
+  - Setup Gantt chart to manage product and sprint backlogs
   - Setup web server to host production site
   - **_Added description and features to the project document_**
   - Added SDLC choice and rational to project document
