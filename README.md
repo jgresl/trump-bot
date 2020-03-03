@@ -45,10 +45,10 @@ Check out [this example file](testedoutput.txt) for sample output.
   - Created README template in GitHub
   - Setup Gantt chart in Google Drive and invited group members
   - Setup web server to host production site
-  - Added description and features to the project document
+  - **_Added description and features to the project document_**
   - Added SDLC choice and rational to project document
-  - Added SDLC phases and tasks tot he project document
-  - Added final WBS / Gantt chart to project document
+  - **_Added SDLC phases and tasks to the project document_**
+  - **_Added final WBS / Gantt chart to project document_**
   - Finalized README document in GitHub
 - **Michael Crouse**
   - Researched chatbot algorithms
