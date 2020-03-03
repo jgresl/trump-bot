@@ -30,7 +30,7 @@ We used the React framework to build our appication because it is a powerful too
   1. Clone the project to a local repository:   `git clone https://github.com/jgresl/cosc310.git`
   2. Navigate to the Java directory: `cd cosc310`
   3. Ensure node.js is installed: https://nodejs.org/en/
-  3. Ensure the required npm libraries are installed: `npm install iforget` and `npm install natural`
+  3. Ensure the required npm libraries are installed: `npm install`
   4. Start the program for development: `npm start`
   5. Build the program for production: `npm run build`
 
@@ -40,7 +40,7 @@ Check out [this example file](testedoutput.txt) for sample output.
 ## Contributors
 - **Jaden Balogh**
   - Created base application with react.js
-  - Generated wiki page for reast.js
+  - Generated wiki page for react.js
   - Implemented text pre-processing
   - Tested and reviewed code changes
 - **Jonathan Gresl**
