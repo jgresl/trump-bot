@@ -49,7 +49,6 @@ Check out [this example file](testedoutput.txt) for sample output.
   - Added SDLC choice and rational to project document
   - **_Added SDLC phases and tasks to the project document_**
   - **_Added final WBS / Gantt chart to project document_**
-  - Finalized README document in GitHub
 - **Michael Crouse**
   - Researched chatbot algorithms
   - Created the sample conversation to build on
