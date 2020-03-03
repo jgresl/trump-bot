@@ -23,7 +23,7 @@ An interactive conversational agent that responds to user input. The agent can "
 
 
 ## Sample Output
-Check out [this example file](sample_output.txt) for sample output.
+Check out [this example file](testedoutput.txt) for sample output.
 
 ## Contributors
 - **Jaden Balogh**
