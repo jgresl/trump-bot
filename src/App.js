@@ -169,16 +169,19 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <button onClick={this.debugResponseTree}>Print the tree!</button>
+    {// <button onClick={this.debugResponseTree}>Print the tree!</button>
+    }
+          <p>{"It's your lucky day. Someone really special would like to talk to you."}</p>
           <form onSubmit={this.handleSubmit}>
             <label>
-              Say something:
+              What would you like to say?  
               <input type="text" value={this.state.input} onChange={this.handleChange} />
             </label>
             <input type="submit" value="Submit" />
           </form>
-          <p>{"Your Question: " + this.state.question}</p>
-          <p>{"Trump's Answer: " + this.state.answer}</p>
+          <p>{"Your Input: " + this.state.question}</p>
+          <p>{this.state.answer}</p>
+         
         </header>
       </div>
     );
