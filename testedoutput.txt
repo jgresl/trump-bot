@@ -1,60 +1,112 @@
-Input:Hi
-Output:Hi. My name is Donald Trump. I am the President of the United States.
-I:How are you Donald?
-O:You can call me Mr. President.
-I:OK Mr. President.
-O:That's better.
-I:Where do you live?
-O:In the greatest country on Earth, with the greatest economy in the world, so much stronger than China's, the United States of America.
-I:Oh, but where is your house?
-O:Well, I have houses all over. I'm supposed to live in the White House but I prefer to live at my hotel because its nicer.
-I:I have a nice house too.
-O:Ha, no one's house is as nice as mine.
-I:Do you have princesses at your house?
-O:I don't need any princesses. I have the greatest supporters. The greatest people in the world.
-I:Princesses are the best though
-O:I'm the best.
-I:You're weird
-O:No, you're weird.
-I:Do you like unicorns?
-O:I invested in a few unicorns. I'm the greatest investor in the world. I make so much money on my investments. No one in the world is as great an investor as me.
-I:What's an investor?
-O:An investor is someone who turns money into more money. Hahahaha.
-I:Oh do you have a lot of money then?
-O:I have so much money. Like an incredible amount of money. Not like this country. We're in so much debt because of Obama.
-I:Who's Obama?
-O:The worst president of the United States, ever.
-I:Oh I liked Obama.
-O:Don't talk about him. Was he even born in America?
-I:I don't know.
-O:You don't know much, hey kid?
-I:That's not very nice.
-O:I'm the nicest
-I:What's your favourite sport?
-O:I like golf.
-I:What's your favourite meal?
-O:Two Big-Macs, two Filet-o-Fish, large fries and a diet coke.
-I:Uh I don't have that.
-O:You don't have much hey kid.
-I:Who's your favourite person on TV?
-O:Myself of course. Have you seen me?
-I:Who's your favourite athlete?
-O:Myself of course. I used to be an incredible athlete.
-I:What happened to the dinosaurs?
-O:Well supposedly they are extinct. But I'm not so sure, we can't trust those scientists and the left-wing media.
-I:When's your bedtime?
-O:Well my staff tries to get me to get some sleep every night. But I usually stay up most of the night and watch Fox News and talk to the birdie on my phone.
-I:Do you wear glasses?
-O:I don't know what you're talking about.
-I:Do you have a dog?
-O:Why does everyone always ask me that? I hate dogs. I mean I love dogs. Dogs are the greatest American pet. American is the greatest country in the world.
-I:You don't sounds very nice.
-O:I'm the nicest
-I:How many kids do you have?
-O:Uh there's Ivanka, and Donald Jr, then those other ones, I think it's like 4. Maybe 5. Or 6? I don't know, ask Melania.
-I:Do you have any grandkids?
-O:What? I'm not old enough to be a grandpa. I'm the youngest, fittest president this country has ever had. Have you seen the reports from my doctor?
-I:What's an impeachment?
-O:That's all the time I have. I have to get on my plane Air Force One, I have a tee time at my club Mar-a-Lago this afternoon.
-I:Ok bye
-O:Bye-bye
+Sample Output (30 turns of dialogue):
+
+Input:        Hi
+Output:       Hi. My name is Donald Trump. I am the President of the United States.
+
+Input:        How are you Donald?
+Output:       You can call me Mr. President.
+
+Input:        OK Mr. President.
+Output:       That's better.
+
+Input:        Where do you live?
+Output:       In the greatest country on Earth, with the greatest economy in the world, so much stronger than 
+              China's, the United States of America.
+
+Input:         Oh, but where is your house?
+Output:        Well, I have houses all over. I'm supposed to live in the White House but I prefer to live at my hotel because 
+               it's nicer.
+
+Input:         I have a nice house too.
+Output:        Ha, no one's house is as nice as mine.
+
+Input:         Do you have princesses at your house?
+Output:        I don't need any princesses. I have the greatest supporters. The greatest people in the world.
+
+Input:         Princesses are the best though
+Output:        I'm the best.
+
+Input:         You're weird
+Output:        No, you're weird.
+
+Input:         Do you like unicorns?
+Output:        I invested in a few unicorns. I'm the greatest investor in the world. I make so much money on my investments. No
+               one in the world is as great an investor as me.
+
+Input:         What's an investor?
+Output:        An investor is someone who turns money into more money. Hahahaha.
+
+Input:         Oh do you have a lot of money then?
+Output:        I have so much money. Like an incredible amount of money. Not like this country. We're in so much debt because of 
+               Obama.
+
+Input:         Who's Obama?
+Output:        The worst president of the United States, ever.
+
+Input:         Oh I liked Obama.
+Output:        Don't talk about him. Was he even born in America?
+
+Input:         I don't know.
+Output:        You don't know much, hey kid?
+
+Input:         That's not very nice.
+Output:        I'm the nicest.
+
+Input:         What's your favourite sport?
+Output:        I like golf.
+
+Input:         What's your favourite meal?
+Output:        Two Big-Macs, two Filet-o-Fish, large fries and a diet coke.
+
+Input:         Uh I don't have that.
+Output:        You don't have much hey kid.
+
+Input:         Who's your favourite person on TV?
+Output:        Myself of course. Have you seen me?
+
+Input:         Who's your favourite athlete?
+Output:        Myself of course. I used to be an incredible athlete.
+
+Input:         What happened to the dinosaurs?
+Output:        Well supposedly they are extinct. But I'm not so sure, we can't trust those scientists and the left-wing media.
+
+
+Input:         When's your bedtime?
+Output:        Well my staff tries to get me to get some sleep every night. But I usually stay up most of the night and watch 
+               Fox News and talk to the birdie on my phone.
+
+Input:         Do you wear glasses?
+Output:        I don't know what you're talking about.
+
+Input:         Do you have a dog?
+Output:        Why does everyone always ask me that? I hate dogs. I mean I love dogs. Dogs are the greatest American pet. 
+               American is the greatest country in the world.
+
+Input:         You don't sound very nice.
+Output:        I'm the nicest
+
+Input:         How many kids do you have?
+Output:        Uh there's Ivanka, and Donald Jr, then those other ones, I think it's like 4. Maybe 5. Or 6? I don't know, ask Melania.
+
+Input:         Do you have any grandkids?
+Output:        What? I'm not old enough to be a grandpa. I'm the youngest, fittest president this country has ever had. Have you 
+               seen the reports from my doctor?
+
+Input:         What's an impeachment?
+Output:        That's all the time I have. I have to get on my plane Air Force One, I have a tee time at my club Mar-a-Lago this        
+               afternoon.
+
+Input:         Ok bye
+Output:        Bye-bye
+
+
+Sample Output (Cannot handle properly 1):
+
+Input:         Is it true that you went bankrupt 5 times?
+Output:        Fake news!
+
+
+Sample Output (Cannot handle properly 2):
+
+Input:         Why are you always fighting with the press?
+Output:        covfefe
