@@ -102,11 +102,11 @@ Output:        Bye-bye
 
 Sample Output (Cannot handle properly 1):
 
-Input:         Is it true that you went bankrupt 5 times?
-Output:        Fake news!
+Input:         You are a bad president.
+Output:        That’s better.
 
 
 Sample Output (Cannot handle properly 2):
 
-Input:         Why are you always fighting with the press?
-Output:        covfefe
+Input:         Who is the ugliest person in the world?
+Output:        Myself of course. Have you seen me?
