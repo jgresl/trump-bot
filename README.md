@@ -13,7 +13,7 @@ An interactive conversational agent that responds to user input. The agent can "
 In this application, the user can "communicate" with the US president, Donald Trump.
 
 ## Features
-- [x] Hosted on an external web server `http://209.121.94.31:5000`
+- [x] Hosted on an external web server `http://209.121.94.31:5000/`
 - [x] Basic user interface that accepts input and displays output in the web browser
 - [x] Generates a response tree from a prefabricated CSV file
 - [x] Determines if the input is a question or a statement
@@ -48,10 +48,10 @@ Check out [this example file](testedoutput.txt) for sample output.
   - Created README template in GitHub
   - Setup Gantt chart to manage product and sprint backlogs
   - Setup web server to host production site
-  - **_Added description and features to the project document_**
+  - Added description and features to the project document
   - Added SDLC choice and rational to project document
-  - **_Added SDLC phases and tasks to the project document_**
-  - **_Added final WBS / Gantt chart to project document_**
+  - Added SDLC phases and tasks to the project document
+  - Added final WBS / Gantt chart to project document
 - **Michael Crouse**
   - Researched chatbot algorithms
   - Created the sample conversation to build on
