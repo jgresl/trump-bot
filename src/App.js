@@ -24,10 +24,6 @@ function GenerateTree(inputText) {
 
   // for each line in the csv input, read as array of strings
   readString(inputText).data.forEach(arr => {
-    //handles blank lines
-    // if (arr[0] == "") {
-    //   return;
-    // }
     let parent = root;
 
     // for each string in each subarray, add to tree
@@ -70,7 +66,7 @@ function PrintTreeRecursive(node, level) {
   });
 }
 
-function GetResponse(inputText, responseTree) {
+function GetResponse(inputText, responseTree, lastResponse) {
   let responseList = [];
 
   // determine the type of input (question or statement)
@@ -95,6 +91,16 @@ function GetResponse(inputText, responseTree) {
     topicTree.children.forEach(topic => {
       responseList.push(topic.data);
     });
+  }
+
+  // prevent repeating the last response we used if possible
+  if (responseList.length > 1 && lastResponse !== undefined) {
+    let idx = responseList.findIndex(data => {
+      return data === lastResponse;
+    });
+    if (idx !== -1) {
+      responseList.splice(idx, 1);
+    }
   }
 
   // return a random response from the possible responses
@@ -124,6 +130,7 @@ function IsQuestion(txt) {
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.history = [];
     this.state = {
       input: '',
       question: '',
@@ -156,10 +163,22 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
+    // get the last response used
+    let lastResponse = undefined;
+    if (this.history.length > 0) {
+      lastResponse = this.history[this.history.length - 1].answer;
+    }
+
     // display the user input and the bot response
-    let output = GetResponse(this.state.input, this.tree);
+    let output = GetResponse(this.state.input, this.tree, lastResponse);
     this.setState({
       input: '',
+      question: this.state.input,
+      answer: output
+    });
+    
+    // save the question and answer into history
+    this.history.push({
       question: this.state.input,
       answer: output
     });
@@ -169,19 +188,16 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-    {// <button onClick={this.debugResponseTree}>Print the tree!</button>
-    }
           <p>{"It's your lucky day. Someone really special would like to talk to you."}</p>
           <form onSubmit={this.handleSubmit}>
             <label>
-              What would you like to say?  
+              What would you like to say? 
               <input type="text" value={this.state.input} onChange={this.handleChange} />
             </label>
             <input type="submit" value="Submit" />
           </form>
           <p>{"Your Input: " + this.state.question}</p>
           <p>{this.state.answer}</p>
-         
         </header>
       </div>
     );
