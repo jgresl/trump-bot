@@ -121,11 +121,46 @@ function TokenizeString(txt) {
   return tokenArray;
 }
 
+// split string into stemmed array of strings, also removes stopwords
+function TokenizeAndStem(txt) {
+  let natural = require('natural');
+  natural.PorterStemmer.attach();
+  console.log(txt.tokenizeAndStem());
+}
+
 // returns whether an input sentence is a question
 // TODO: should be updated to use a library instead
 function IsQuestion(txt) {
   return txt.charAt(txt.length - 1) === '?';
 }
+
+// spellcheck returns list of 'words' from original word where each item in list has 2 adjacent letters swapped, as well as a stemmed word
+function CrudeSpellcheck(word){
+  let a = word.split('');
+  let list = []
+  for (let i = 0; i < word.length-1; i++){
+    let temp = a[i];
+    a[i] = a[i+1];
+    a[i+1] = temp;
+    let newWord = a.join('');
+    list.push(newWord);
+    temp = a[i];
+    a[i] = a[i+1];
+    a[i+1] = temp;
+  }
+  let natural = require('natural');
+  list.push(natural.PorterStemmer.stem(word));
+  return list;
+}
+
+//input array of strings, returns range of [-5,5] based on positive/negative sentiment of input (normalized so will likely land between [-1,1] unless explicitly positive/negative)
+//can't figure out how to import/use afinn-165 module
+/*function Sentiment(tokenizedString) {
+  let Analyzer = require('natural').SentimentAnalyzer;
+  let stemmer = require('natural').PorterStemmer;
+  let analyzer = new Analyzer("English", stemmer, "afinn");
+  return analyzer.getSentiment(tokenizedString); 
+} */
 
 class App extends React.Component {
   constructor(props) {
