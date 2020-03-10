@@ -2,8 +2,6 @@ import React from 'react';
 import { readString } from 'react-papaparse';
 import { WordTokenizer } from 'natural';
 import './App.css';
-import trump from "./images/trump.jpg";
-import wendy from "./images/wendy.png";
 
 class TreeNode {
   constructor(data) {
@@ -225,35 +223,16 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <div id="Chat-header">
-            <h2>Trump Bot</h2>
-          </div>
-          <div id="Chat-content">
-            <article className="botRow">
-              <img className="botPicture" src={trump} alt="trump"/>
-              <div className="botMessage">What is your name?</div>
-            </article>
-            <article className="userRow">
-              <div className="userMessage">My name is Wendy</div>
-              <img className="userPicture" src={wendy} alt="wendy"/>
-            </article>
-            <article className="botRow">
-              <img className="botPicture" src={trump} alt="trump"/>
-              <div className="botMessage">How old are you?</div>
-            </article>
-            <article className="userRow">
-              <div className="userMessage">I'm 14, duh!</div>
-              <img className="userPicture" src={wendy} alt="wendy"/>
-            </article>
-            <p>{"Your Input: " + this.state.question}</p>
-            <p>{this.state.answer}</p>
-          </div>
-          <div id="Chat-footer">
+          <p>{"It's your lucky day. Someone really special would like to talk to you."}</p>
           <form onSubmit={this.handleSubmit}>
-            <input type="text" id="messageField" placeholder="What do you want to say?" value={this.state.input} onChange={this.handleChange}/>
-            <input type="submit" id="messageButton"/>
+            <label>
+              What would you like to say? 
+              <input type="text" value={this.state.input} onChange={this.handleChange} />
+            </label>
+            <input type="submit" value="Submit" />
           </form>
-          </div>
+          <p>{"Your Input: " + this.state.question}</p>
+          <p>{this.state.answer}</p>
         </header>
       </div>
     );
