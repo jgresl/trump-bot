@@ -2,6 +2,8 @@ import React from 'react';
 import { readString } from 'react-papaparse';
 import { WordTokenizer } from 'natural';
 import './App.css';
+import trump from "./images/trump.jpg";
+import wendy from "./images/wendy.png";
 
 class TreeNode {
   constructor(data) {
@@ -121,46 +123,11 @@ function TokenizeString(txt) {
   return tokenArray;
 }
 
-// split string into stemmed array of strings, also removes stopwords
-function TokenizeAndStem(txt) {
-  let natural = require('natural');
-  natural.PorterStemmer.attach();
-  console.log(txt.tokenizeAndStem());
-}
-
 // returns whether an input sentence is a question
 // TODO: should be updated to use a library instead
 function IsQuestion(txt) {
   return txt.charAt(txt.length - 1) === '?';
 }
-
-// spellcheck returns list of 'words' from original word where each item in list has 2 adjacent letters swapped, as well as a stemmed word
-function CrudeSpellcheck(word){
-  let a = word.split('');
-  let list = []
-  for (let i = 0; i < word.length-1; i++){
-    let temp = a[i];
-    a[i] = a[i+1];
-    a[i+1] = temp;
-    let newWord = a.join('');
-    list.push(newWord);
-    temp = a[i];
-    a[i] = a[i+1];
-    a[i+1] = temp;
-  }
-  let natural = require('natural');
-  list.push(natural.PorterStemmer.stem(word));
-  return list;
-}
-
-//input array of strings, returns range of [-5,5] based on positive/negative sentiment of input (normalized so will likely land between [-1,1] unless explicitly positive/negative)
-//can't figure out how to import/use afinn-165 module
-/*function Sentiment(tokenizedString) {
-  let Analyzer = require('natural').SentimentAnalyzer;
-  let stemmer = require('natural').PorterStemmer;
-  let analyzer = new Analyzer("English", stemmer, "afinn");
-  return analyzer.getSentiment(tokenizedString); 
-} */
 
 class App extends React.Component {
   constructor(props) {
@@ -223,16 +190,35 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <p>{"It's your lucky day. Someone really special would like to talk to you."}</p>
+          <div id="Chat-header">
+            <h2>Trump Bot</h2>
+          </div>
+          <div id="Chat-content">
+            <article className="botRow">
+              <img className="botPicture" src={trump} alt="trump"/>
+              <div className="botMessage">What is your name?</div>
+            </article>
+            <article className="userRow">
+              <div className="userMessage">My name is Wendy</div>
+              <img className="userPicture" src={wendy} alt="wendy"/>
+            </article>
+            <article className="botRow">
+              <img className="botPicture" src={trump} alt="trump"/>
+              <div className="botMessage">How old are you?</div>
+            </article>
+            <article className="userRow">
+              <div className="userMessage">I'm 14, duh!</div>
+              <img className="userPicture" src={wendy} alt="wendy"/>
+            </article>
+            <p>{"Your Input: " + this.state.question}</p>
+            <p>{this.state.answer}</p>
+          </div>
+          <div id="Chat-footer">
           <form onSubmit={this.handleSubmit}>
-            <label>
-              What would you like to say? 
-              <input type="text" value={this.state.input} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
+            <input type="text" id="messageField" placeholder="What do you want to say?" value={this.state.input} onChange={this.handleChange}/>
+            <input type="submit" id="messageButton"/>
           </form>
-          <p>{"Your Input: " + this.state.question}</p>
-          <p>{this.state.answer}</p>
+          </div>
         </header>
       </div>
     );
