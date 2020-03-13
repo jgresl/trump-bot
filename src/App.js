@@ -129,9 +129,10 @@ function TokenizeAndStem(txt) {
 }
 
 // returns whether an input sentence is a question
-// TODO: should be updated to use a library instead
 function IsQuestion(txt) {
-  return txt.charAt(txt.length - 1) === '?';
+  let questionwords = ["who", "whos", "what", "when", "where", "why", "how", "can", "will", "would", "may", "might", "could"];
+  let firstword = txt.split(" ")[0].toLowerCase();
+  return txt.endsWith('?') || questionwords.includes(firstword);
 }
 
 // spellcheck returns list of 'words' from original word where each item in list has 2 adjacent letters swapped, as well as a stemmed word
@@ -159,7 +160,7 @@ function CrudeSpellcheck(word){
   let Analyzer = require('natural').SentimentAnalyzer;
   let stemmer = require('natural').PorterStemmer;
   let analyzer = new Analyzer("English", stemmer, "afinn");
-  return analyzer.getSentiment(tokenizedString); 
+  return analyzer.getSentiment(tokenizedString);
 } */
 
 class App extends React.Component {
@@ -211,7 +212,7 @@ class App extends React.Component {
       question: this.state.input,
       answer: output
     });
-    
+
     // save the question and answer into history
     this.history.push({
       question: this.state.input,
@@ -226,7 +227,7 @@ class App extends React.Component {
           <p>{"It's your lucky day. Someone really special would like to talk to you."}</p>
           <form onSubmit={this.handleSubmit}>
             <label>
-              What would you like to say? 
+              What would you like to say?
               <input type="text" value={this.state.input} onChange={this.handleChange} />
             </label>
             <input type="submit" value="Submit" />
