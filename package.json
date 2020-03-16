@@ -14,6 +14,7 @@
     "react-dom": "^16.12.0",
     "react-papaparse": "^2.0.2",
     "react-scripts": "3.4.0",
+    "sentiment": "^5.0.2",
     "wordnet-db": "^3.1.14"
   },
   "scripts": {
