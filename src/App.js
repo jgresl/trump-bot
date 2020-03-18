@@ -182,8 +182,13 @@ class App extends React.Component {
     
     // save the question and answer into history
     this.history.push({
-      question: this.state.input,
-      answer: output
+      name: 'user',
+      text: this.state.input
+    });
+
+    this.history.push({
+      name: 'bot',
+      text: output
     });
   }
 
@@ -198,16 +203,7 @@ class App extends React.Component {
 
           <div id="Chat-content">
             
-            <AllMessages/>
-
-            <article className="userRow">
-                <img className="userPicture" src={user} alt="user"/> 
-                <p className="userMessage">{this.state.question}</p>
-            </article>
-            <article className="botRow">
-                <img className="botPicture" src={bot} alt="bot"/>
-                <p className="botMessage">{this.state.answer}</p>
-            </article>
+            <AllMessages history={this.history}/>
 
           </div>
 
