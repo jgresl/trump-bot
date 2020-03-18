@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import MessageList from './components/MessageList';
+import { animateScroll } from "react-scroll";
 
 class App extends React.Component {
   constructor(props) {
@@ -12,6 +14,20 @@ class App extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  scrollToBottom() {
+    animateScroll.scrollToBottom({
+      containerId: "Chat-content"
+    });
+  }
+
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
 
   handleChange(event) {
@@ -41,10 +57,16 @@ class App extends React.Component {
         answer: output
       });
       
-      // save the question and answer into history
+      // save the user's question into history
       this.history.push({
-        question: this.state.input,
-        answer: output
+        name: 'user',
+        text: this.state.question
+      });
+
+      // save the bot's response into history
+      this.history.push({
+        name: 'bot',
+        text: this.state.answer
       });
     });
   }
@@ -52,18 +74,24 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <p>{"It's your lucky day. Someone really special would like to talk to you."}</p>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              What would you like to say? 
-              <input type="text" value={this.state.input} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
-          <p>{"Your Input: " + this.state.question}</p>
-          <p>{this.state.answer}</p>
-        </header>
+        <div className="App-header">
+
+          <div id="Chat-header">
+            <h2>Trump Bot</h2>
+          </div>
+
+          <div id="Chat-content">
+            <MessageList history={this.history}/>
+          </div>
+
+          <div id="Chat-footer">
+            <form onSubmit={this.handleSubmit}>
+              <input type="text" id="messageField" placeholder="What do you want to say?" autoComplete="off" value={this.state.input} onChange={this.handleChange}/>
+              <input type="submit" id="messageButton" value="Send"/>
+            </form>
+          </div>
+
+        </div>
       </div>
     );
   }
