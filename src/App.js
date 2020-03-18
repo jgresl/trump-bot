@@ -2,7 +2,9 @@ import React from 'react';
 import { readString } from 'react-papaparse';
 import { WordTokenizer } from 'natural';
 import './App.css';
-import Convo from './components/Convo';
+import AllMessages from './components/AllMessages';
+import bot from "./images/trump.png";
+import user from "./images/wendy.png";
 
 class TreeNode {
   constructor(data) {
@@ -194,11 +196,24 @@ class App extends React.Component {
             <h2>Trump Bot</h2>
           </div>
 
-          <Convo/>
+          <div id="Chat-content">
+            
+            <AllMessages/>
+
+            <article className="userRow">
+                <img className="userPicture" src={user} alt="user"/> 
+                <p className="userMessage">{this.state.question}</p>
+            </article>
+            <article className="botRow">
+                <img className="botPicture" src={bot} alt="bot"/>
+                <p className="botMessage">{this.state.answer}</p>
+            </article>
+
+          </div>
 
           <div id="Chat-footer">
             <form onSubmit={this.handleSubmit}>
-              <input type="text" id="messageField" placeholder="What do you want to say?" autocomplete="off" value={this.state.input} onChange={this.handleChange}/>
+              <input type="text" id="messageField" placeholder="What do you want to say?" autoComplete="off" value={this.state.input} onChange={this.handleChange}/>
               <input type="submit" id="messageButton" value="Send"/>
             </form>
           </div>
