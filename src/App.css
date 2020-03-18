@@ -39,41 +39,48 @@
   background-color: lightgrey;
   width: 500px;
   height: 600px;
+  overflow-y: auto;
+  border-width: 3px 0px;
+  border-style: solid;
+  border-color: lightgray;
 }
 
 .botRow {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  align-items: flex-end;
 }
 
 .botPicture {
-  border-radius: 25px 25px 0px 25px;
   margin: 0.25em;
   margin-top: 0.5em;
-  height: 3em;
+  height: 2.75em;
 }
 
 .botMessage {
-  background-color: royalblue;
+  background-color: #4ea4f5;
   border-radius: 25px 25px 25px 0px;
   margin: 0.25em;
   margin-top: 0.5em;
   font-size: 0.8em;
-  padding: 1em;
+  padding: .75em;
+  text-align: left;
+  margin-right: 3.75em;
 }
 
 .userRow {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  flex-direction: row-reverse;
+  align-items: flex-end;
 }
 
 .userPicture {
-  border-radius: 25px 25px 25px 0px;
+  display: flex;
+  align-items: bottom;
+  vertical-align: bottom;
   margin: 0.25em;
   margin-top: 0.5em;
-  height: 3em;
+  height: 2.75em;
 }
 
 .userMessage {
@@ -82,15 +89,48 @@
   margin: 0.25em;
   margin-top: 0.5em;
   font-size: 0.8em;
-  padding: 1em;
+  padding: .75em;
+  text-align: left;
+  margin-left:4.25em;
+  color: black;
 }
 
 #Chat-footer {
-  background-color: white;
+  background-color: gray;
   border-radius: 0px 0px 25px 25px;
-  width: 500px;
-  height: 80px;
-  color: gray;
+  width: 480px;
+  height: 60px;
+  padding: 10px;
+}
+
+#messageField {
+  width: 80%;
+  height: 38px;
+  border-radius: 10px 0 0 10px;
+  padding: 5px;
+  background-color: white;
+  color: black;
+  font-size: 0.6em;
+  font-size: 20px;
+  border: 1pt solid gray;
+  border-right-width: 0;
+  margin-top: 5px;
+}
+
+#messageButton {
+  width: 15%;
+  height: 50px;
+  background:royalblue;
+  text-align: center;
+  color: white;
+  padding: 5px;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  font-size: 20px;
+  border: 1pt solid gray;
+  border-left-width: 0;
+  margin-top: 5px;
+  font-weight: bold;
 }
 
 .App-link {
