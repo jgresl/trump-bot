@@ -3,8 +3,7 @@ import { readString } from 'react-papaparse';
 import { WordTokenizer } from 'natural';
 import './App.css';
 import AllMessages from './components/AllMessages';
-import bot from "./images/trump.png";
-import user from "./images/wendy.png";
+import { animateScroll } from "react-scroll";
 
 class TreeNode {
   constructor(data) {
@@ -144,6 +143,12 @@ class App extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  scrollToBottom() {
+    animateScroll.scrollToBottom({
+      containerId: "Chat-content"
+    });
+  }
+
   componentDidMount() {
     // read the CSV file containing the canned responses and generate the response tree
     fetch('kidconvo.csv')
@@ -151,6 +156,11 @@ class App extends React.Component {
       .then(text => {
         this.tree = GenerateTree(text);
       });
+      this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
 
   debugResponseTree() {
@@ -189,7 +199,7 @@ class App extends React.Component {
     this.history.push({
       name: 'bot',
       text: output
-    });
+    });    
   }
 
   render() {
@@ -202,9 +212,7 @@ class App extends React.Component {
           </div>
 
           <div id="Chat-content">
-            
             <AllMessages history={this.history}/>
-
           </div>
 
           <div id="Chat-footer">
