@@ -1,204 +1,31 @@
 import React from 'react';
-import { readString } from 'react-papaparse';
-import { WordTokenizer } from 'natural';
 import './App.css';
-
-let dictionary = [];
-
-class TreeNode {
-  constructor(data) {
-    this.data = data;
-    this.children = [];
-    this.getSubTree = this.getSubTree.bind(this);
-  }
-
-  // returns the first child with matching data
-  getSubTree(data) {
-    return this.children.find(child => {
-      return child.data === data;
-    });
-  }
-}
-
-// generate the response tree from a CSV-formatted text input
-function GenerateTree(inputText) {
-  let root = new TreeNode("root");
-
-  // for each line in the csv input, read as array of strings
-  readString(inputText).data.forEach(arr => {
-    let parent = root;
-
-    // for each string in each subarray, add to tree
-    arr.forEach(txt => {
-      // check if the string already exists in the tree
-      let node = parent.children.find(child => {
-        return child.data === txt;
-      });
-
-      // add the string to the tree if needed
-      if (!node) {
-        node = new TreeNode(txt);
-        parent.children.push(node);
-
-        dictionary.push(txt);
-      }
-
-      parent = node;
-    });
-  });
-
-  return root;
-}
-
-// a DFS recursive printing function for the response tree
-function PrintTree(root) {
-  console.log(root.data);
-  root.children.forEach(child => {
-    PrintTreeRecursive(child, 1);
-  });
-}
-
-// recursive helper method for PrintTree
-function PrintTreeRecursive(node, level) {
-  let indent = "";
-  for (let i = 0; i < level; i++) {
-    indent += ".";
-  }
-  console.log(indent + node.data);
-  node.children.forEach(child => {
-    PrintTreeRecursive(child, level + 1);
-  });
-}
-
-function GetResponse(inputText, responseTree, lastResponse) {
-  let responseList = [];
-
-  // determine the type of input (question or statement)
-  let category = IsQuestion(inputText) ? "Q" : "S";
-  let categoryTree = responseTree.getSubTree(category);
-
-  // get each matched topic in the response tree and
-  // add all the possible responses to the response list
-  let inputArray = TokenizeString(inputText);
-  inputArray.forEach(input => {
-    let topicTree = categoryTree.getSubTree(input);
-    if (topicTree !== undefined) {
-      topicTree.children.forEach(topic => {
-        responseList.push(topic.data);
-      });
-    }
-  });
-
-  // add generic responses if no topics matched
-  if (responseList.length === 0) {
-    let topicTree = categoryTree.getSubTree("");
-    topicTree.children.forEach(topic => {
-      responseList.push(topic.data);
-    });
-  }
-
-  // prevent repeating the last response we used if possible
-  if (responseList.length > 1 && lastResponse !== undefined) {
-    let idx = responseList.findIndex(data => {
-      return data === lastResponse;
-    });
-    if (idx !== -1) {
-      responseList.splice(idx, 1);
-    }
-  }
-
-  // return a random response from the possible responses
-  return GetRandomElement(responseList);
-}
-
-// returns a random element from an array
-function GetRandomElement(arr) {
-  let rand = Math.floor(Math.random() * arr.length)
-  return arr[rand];
-}
-
-// split string into a tokenized array of strings
-function TokenizeString(txt) {
-  // currently uses 'natural' library
-  let tokenizer = new WordTokenizer();
-  let tokenArray = tokenizer.tokenize(txt.toLowerCase());
-  return tokenArray;
-}
-
-// split string into stemmed array of strings, also removes stopwords
-function TokenizeAndStem(txt) {
-  let natural = require('natural');
-  natural.PorterStemmer.attach();
-  return txt.tokenizeAndStem();
-}
-
-// returns whether an input sentence is a question
-// TODO: should be updated to use a library instead
-function IsQuestion(txt) {
-  return txt.charAt(txt.length - 1) === '?';
-}
-
-// spellcheck returns list of corrections sorted in order of decreasing probability, only matches to words in our generated tree(ie. csv used to build it)
-// currently using edit distance of 1 for maximum speed
-function Spellcheck(word){
-  let natural = require('natural');
-  var spellcheck = new natural.Spellcheck(dictionary);
-  return spellcheck.getCorrections(word,1);
-
-}
-
-//input array of strings, returns range of [-5,5] based on positive/negative sentiment of input
-function Sentiment(sentence) {
-  let Sentiment = require('sentiment');
-  let sentiment = new Sentiment();
-  let result = sentiment.analyze(sentence);
-  return result.score;
-} 
-
-//not currently functioning
-function POSTagger(sentence){
-  let natural = require("natural");
-  let lexicon = new natural.Lexicon("EN",'N','NNP');
-  let ruleSet = new natural.RuleSet('EN');
-  let tagger = new natural.BrillPOSTagger(lexicon, ruleSet);
-  return tagger.tag(sentence);
-}
-
-//input string and output array of bigrams
-function Ngrams(sentence) {
-  let natural = require("natural");
-  let ngrams = natural.NGrams;
-  return ngrams.bigrams(sentence);
-}
+import MessageList from './components/MessageList';
+import { animateScroll } from "react-scroll";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.history = [];
     this.state = {
       input: '',
-      question: '',
-      answer: ''
+      history: []
     };
-    this.debugResponseTree = this.debugResponseTree.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.scrollToBottom = this.scrollToBottom.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    // read the CSV file containing the canned responses and generate the response tree
-    fetch('kidconvo.csv')
-      .then(r => r.text())
-      .then(text => {
-        this.tree = GenerateTree(text);
-      });
+  // Scrolls to the bottom of messages
+  scrollToBottom(duration, delay = 0) {
+    animateScroll.scrollToBottom({
+      containerId: "Chat-content",
+      smooth: true,
+      duration: duration,
+      delay: delay
+    });
   }
 
-  debugResponseTree() {
-    PrintTree(this.tree);
-  }
-
-  handleChange(event) {
+  handleInputChange(event) {
     this.setState({
       input: event.target.value
     });
@@ -207,42 +34,69 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    // get the last response used
+    // Clear input and update history with the user's input
+    this.setState(state => {
+      return {
+        input: '',
+        history: state.history.concat({
+          name: 'user',
+          text: state.input
+        })
+      };
+    }, () => {
+      this.scrollToBottom(200, 200);
+    });
+
+    // Get the last response used
     let lastResponse = undefined;
-    if (this.history.length > 0) {
-      lastResponse = this.history[this.history.length - 1].answer;
+    if (this.state.history.length > 0) {
+      lastResponse = this.state.history[this.state.history.length - 1].text;
     }
 
-    // display the user input and the bot response
-    let output = GetResponse(this.state.input, this.tree, lastResponse);
-    this.setState({
-      input: '',
-      question: this.state.input,
-      answer: output
-    });
-    
-    // save the question and answer into history
-    this.history.push({
-      question: this.state.input,
-      answer: output
+    // Get the bot's response from the server
+    fetch(`http://localhost:17000?input=${this.state.input}&lastResponse=${lastResponse}`)
+    .then(response => {
+      return response.text();
+    })
+    .then(output => {
+      // Imitate a delay on receiving a response
+      setTimeout(() => {
+        // Update history with the bot's response
+        this.setState(state => {
+          return {
+            history: state.history.concat({
+              name: 'bot',
+              text: output
+            })
+          };
+        }, () => {
+          this.scrollToBottom(300);
+        });
+      }, 1200);
     });
   }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <p>{"It's your lucky day. Someone really special would like to talk to you."}</p>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              What would you like to say? 
-              <input type="text" value={this.state.input} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
-          <p>{"Your Input: " + this.state.question}</p>
-          <p>{this.state.answer}</p>
-        </header>
+        <div className="App-header">
+
+          <div id="Chat-header">
+            <h2>Trump Bot</h2>
+          </div>
+
+          <div id="Chat-content">
+            <MessageList history={this.state.history}/>
+          </div>
+
+          <div id="Chat-footer">
+            <form onSubmit={this.handleSubmit}>
+              <input type="text" id="messageField" placeholder="What do you want to say?" autoComplete="off" value={this.state.input} onChange={this.handleInputChange}/>
+              <input type="submit" id="messageButton" value="Send"/>
+            </form>
+          </div>
+
+        </div>
       </div>
     );
   }
