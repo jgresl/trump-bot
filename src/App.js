@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
-import AllMessages from './components/AllMessages';
-import bot from "./images/trump.png";
-import user from "./images/wendy.png";
+import MessageList from './components/MessageList';
+import { animateScroll } from "react-scroll";
 
 class App extends React.Component {
   constructor(props) {
@@ -15,6 +14,20 @@ class App extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  scrollToBottom() {
+    animateScroll.scrollToBottom({
+      containerId: "Chat-content"
+    });
+  }
+
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
 
   handleChange(event) {
@@ -43,11 +56,17 @@ class App extends React.Component {
         question: this.state.input,
         answer: output
       });
-
-      // save the question and answer into history
+      
+      // save the user's question into history
       this.history.push({
-        question: this.state.input,
-        answer: output
+        name: 'user',
+        text: this.state.question
+      });
+
+      // save the bot's response into history
+      this.history.push({
+        name: 'bot',
+        text: this.state.answer
       });
     });
   }
@@ -62,18 +81,7 @@ class App extends React.Component {
           </div>
 
           <div id="Chat-content">
-            
-            <AllMessages/>
-
-            <article className="userRow">
-                <img className="userPicture" src={user} alt="user"/> 
-                <p className="userMessage">{this.state.question}</p>
-            </article>
-            <article className="botRow">
-                <img className="botPicture" src={bot} alt="bot"/>
-                <p className="botMessage">{this.state.answer}</p>
-            </article>
-
+            <MessageList history={this.history}/>
           </div>
 
           <div id="Chat-footer">
