@@ -1,12 +1,12 @@
 import React from 'react'
-import user from "../images/wendy.png";
+import wendyPicture from "../images/wendy.png";
 
-function UserMessage({message}) {
+function UserMessage(props) {
     return (
         <div>
             <article className="userRow">
-                <img className="userPicture" src={user} alt="user"/>
-                <p className="userMessage">{message.text}</p>
+                <img className="userPicture" src={wendyPicture} alt="user"/>
+                <p className="userMessage">{props.message.text}</p>
             </article>
         </div>
     )

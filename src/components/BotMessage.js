@@ -1,12 +1,12 @@
 import React from 'react'
-import bot from "../images/trump.png";
+import trumpPicture from "../images/trump.png";
 
-function BotMessage({message}) {
+function BotMessage(props) {
     return (
         <div>
             <article className="botRow">
-                <img className="botPicture" src={bot} alt="bot"/>
-                <p className="botMessage">{message.text}</p>
+                <img className="botPicture" src={trumpPicture} alt="bot"/>
+                <p className="botMessage">{props.message.text}</p>
             </article>
         </div>
     )

@@ -9,6 +9,7 @@ app.use(cors());
 app.listen(17000);
 
 app.get('/', function (req, res) {
+  console.log("I got a message!");
   res.send(GetResponse(req.query.input, req.query.lastResponse));
 });
 
