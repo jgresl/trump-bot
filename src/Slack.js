@@ -4,7 +4,7 @@ var lastResponse = '';
 
 // Initializes your app with your bot token and signing secret
 const app = new App({
-  token: 'xoxb-755200714180-1009768874725-MNY6gFJwmqgtrTvun59Laob1',
+  token: 'xoxb-755200714180-1009768874725-toSW2OiQ5jJl6vKeuULLsLPL',
   signingSecret: '50ef9ff2b498e3cb6ebc96491f64eed8'
 });
 
