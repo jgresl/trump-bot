@@ -15,7 +15,9 @@ const app = new App({
   console.log('⚡️ Bolt app is running!');
 })();
 
+//Wait to be mentioned in chat
 app.event('app_mention', async ({event, say}) => {
+  //Get response from server
   fetch(`http://localhost:17000?input=${event.text}&lastResponse=${lastResponse}`)
     .then(response => {
       return response.text();
