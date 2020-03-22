@@ -28,6 +28,7 @@ class TreeNode {
   }
 }
 
+var dictionary = [];
 var responseTree = GenerateTree('../public/kidconvo.csv');
 
 // generate the response tree from a CSV-formatted text input
@@ -53,6 +54,7 @@ function GenerateTree(fileName) {
         if (!node) {
           node = new TreeNode(txt);
           parent.children.push(node);
+          dictionary.push(txt);
         }
   
         parent = node;
@@ -110,7 +112,7 @@ function GetResponse(inputText, lastResponse) {
 
   // get each matched topic in the response tree and
   // add all the possible responses to the response list
-  let inputArray = TokenizeString(inputText);
+  let inputArray = TokenizeString(inputText.toLowerCase());
   inputArray.forEach(input => {
     let topicTree = categoryTree.getSubTree(input);
     if (topicTree !== undefined) {
@@ -152,7 +154,7 @@ function GetRandomElement(arr) {
 function TokenizeString(txt) {
   // currently uses 'natural' library
   let tokenizer = new WordTokenizer();
-  let tokenArray = tokenizer.tokenize(txt.toLowerCase());
+  let tokenArray = tokenizer.tokenize(txt);
   return tokenArray;
 }
 
@@ -160,7 +162,7 @@ function TokenizeString(txt) {
 function TokenizeAndStem(txt) {
   let natural = require('natural');
   natural.PorterStemmer.attach();
-  console.log(txt.tokenizeAndStem());
+  return txt.tokenizeAndStem();
 }
 
 // returns whether an input sentence is a question
@@ -169,30 +171,54 @@ function IsQuestion(txt) {
   return txt.charAt(txt.length - 1) === '?';
 }
 
-// spellcheck returns list of 'words' from original word where each item in list has 2 adjacent letters swapped, as well as a stemmed word
-function CrudeSpellcheck(word){
-  let a = word.split('');
-  let list = []
-  for (let i = 0; i < word.length-1; i++){
-    let temp = a[i];
-    a[i] = a[i+1];
-    a[i+1] = temp;
-    let newWord = a.join('');
-    list.push(newWord);
-    temp = a[i];
-    a[i] = a[i+1];
-    a[i+1] = temp;
-  }
+// spellcheck returns list of corrections sorted in order of decreasing probability, only matches to words in our generated tree(ie. csv used to build it)
+// currently using edit distance of 1 for maximum speed
+function Spellcheck(word){
   let natural = require('natural');
-  list.push(natural.PorterStemmer.stem(word));
-  return list;
+  var spellcheck = new natural.Spellcheck(dictionary);
+  return spellcheck.getCorrections(word,1);
+}
+
+//input array of tokens, return JSON with token and POS tag
+function POSTagger(tokenizedString){
+  let natural = require("natural");  
+  const language = "../node_modules/natural/lib/natural/brill_pos_tagger/data/English/lexicon_from_posjs.json"
+  const rules = "../node_modules/natural/lib/natural/brill_pos_tagger/data/English/tr_from_posjs.txt"
+  const defaultCategory = 'N';
+  const defaultCategoryCapitalized = 'NNP';
+
+  let lexicon = new natural.Lexicon(language, defaultCategory, defaultCategoryCapitalized);
+  let ruleSet = new natural.RuleSet(rules);
+  let tagger = new natural.BrillPOSTagger(lexicon, ruleSet);
+  return tagger.tag(tokenizedString);
 }
 
 //input array of strings, returns range of [-5,5] based on positive/negative sentiment of input (normalized so will likely land between [-1,1] unless explicitly positive/negative)
-//can't figure out how to import/use afinn-165 module
-/*function Sentiment(tokenizedString) {
+function Sentiment(tokenizedString) {
   let Analyzer = require('natural').SentimentAnalyzer;
   let stemmer = require('natural').PorterStemmer;
   let analyzer = new Analyzer("English", stemmer, "afinn");
   return analyzer.getSentiment(tokenizedString); 
-} */
+}
+
+//input string and output array of bigrams
+function Ngrams(sentence) {
+  let natural = require("natural");
+  let ngrams = natural.NGrams;
+  return ngrams.bigrams(sentence);
+}
+
+function examples(){
+  const exStr = "This is a sentence about a lovely goat named Billy and his friend named Wendy."
+  const exStr2 = "Ugh I hate stupid evil trolls."
+  const exStr3 = "donld"
+  let tokens = TokenizeString(exStr);
+  let tokens2 = TokenizeString(exStr2);
+  console.log(`Sentence 1: ${exStr}\nSentence 2: ${exStr2}\nSentence 3: ${exStr3}\nSentiment:`);
+  console.log(Sentiment(tokens)); console.log(Sentiment(tokens2));
+  console.log("Bigrams\n", Ngrams(exStr));
+  console.log("POSTagger\n", POSTagger(tokens));
+  console.log("Spellcheck sentence 3:\n", Spellcheck(exStr3));
+  console.log("TokenizeString:\n", tokens);
+  console.log("TokenizeAndStem:\n", TokenizeAndStem(exStr));
+}
