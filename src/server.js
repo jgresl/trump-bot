@@ -9,7 +9,7 @@ app.use(cors());
 app.listen(17000);
 
 app.get('/', function (req, res) {
-  console.log("I got a message!");
+  //console.log("I got a message!");
   res.send(GetResponse(req.query.input, req.query.lastResponse));
 });
 
@@ -105,16 +105,20 @@ function PrintTreeRecursive(node, level) {
 // returns a string response from the response tree based on the inputText
 function GetResponse(inputText, lastResponse) {
   let responseList = [];
+  let inputArray = TokenizeString(inputText.toLowerCase());
 
   // determine the type of input (question or statement)
   let category = IsQuestion(inputText) ? "Q" : "S";
   let categoryTree = responseTree.getSubTree(category);
 
+  // determine the sentiment of input (positive or negative)
+  let sentiment = GetSentiment(inputArray) >= 0 ? "P" : "N";
+  let sentimentTree = categoryTree.getSubTree(sentiment);
+
   // get each matched topic in the response tree and
   // add all the possible responses to the response list
-  let inputArray = TokenizeString(inputText.toLowerCase());
   inputArray.forEach(input => {
-    let topicTree = categoryTree.getSubTree(input);
+    let topicTree = sentimentTree.getSubTree(input);
     if (topicTree !== undefined) {
       topicTree.children.forEach(topic => {
         responseList.push(topic.data);
@@ -124,7 +128,7 @@ function GetResponse(inputText, lastResponse) {
 
   // add generic responses if no topics matched
   if (responseList.length === 0) {
-    let topicTree = categoryTree.getSubTree("");
+    let topicTree = sentimentTree.getSubTree("");
     topicTree.children.forEach(topic => {
       responseList.push(topic.data);
     });
@@ -194,7 +198,7 @@ function POSTagger(tokenizedString){
 }
 
 //input array of strings, returns range of [-5,5] based on positive/negative sentiment of input (normalized so will likely land between [-1,1] unless explicitly positive/negative)
-function Sentiment(tokenizedString) {
+function GetSentiment(tokenizedString) {
   let Analyzer = require('natural').SentimentAnalyzer;
   let stemmer = require('natural').PorterStemmer;
   let analyzer = new Analyzer("English", stemmer, "afinn");
@@ -215,7 +219,7 @@ function examples(){
   let tokens = TokenizeString(exStr);
   let tokens2 = TokenizeString(exStr2);
   console.log(`Sentence 1: ${exStr}\nSentence 2: ${exStr2}\nSentence 3: ${exStr3}\nSentiment:`);
-  console.log(Sentiment(tokens)); console.log(Sentiment(tokens2));
+  console.log(GetSentiment(tokens)); console.log(GetSentiment(tokens2));
   console.log("Bigrams\n", Ngrams(exStr));
   console.log("POSTagger\n", POSTagger(tokens));
   console.log("Spellcheck sentence 3:\n", Spellcheck(exStr3));
