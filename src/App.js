@@ -54,7 +54,7 @@ class App extends React.Component {
     }
 
     // Get the bot's response from the server
-    fetch(`http://` + window.location.host + `:17000?input=${this.state.input}&lastResponse=${lastResponse}`)
+    fetch(`http://localhost:17000?input=${this.state.input}&lastResponse=${lastResponse}`)
     .then(response => {
       return response.text();
     })
