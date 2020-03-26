@@ -183,6 +183,16 @@ function Spellcheck(word){
   return spellcheck.getCorrections(word,1);
 }
 
+// input sentence and return array of words, first match to each word of length > 4 that is in dictionary(csv)
+function Spellchecker(sentence){
+  let sent = TokenizeString(sentence);
+  let arr = [];
+  sent.forEach(e => {
+    if (e.length > 4)
+      arr.push(Spellcheck(e)[0])});
+  return arr;
+}
+
 //input array of tokens, return JSON with token and POS tag
 function POSTagger(tokenizedString){
   let natural = require("natural");  
@@ -230,6 +240,7 @@ function GetNouns(sentence){
   return nouns;
 }
 
+//takes inputted sentence and returns array of strings with all original nouns and synonyms
 function GetNounSyns(sentence){
   let nouns = GetNouns(sentence); 
   let syns = [];
