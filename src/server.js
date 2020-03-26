@@ -106,6 +106,12 @@ function PrintTreeRecursive(node, level) {
 function GetResponse(inputText, lastResponse) {
   let responseList = [];
   let inputArray = TokenizeString(inputText.toLowerCase());
+  let spellChecked = Spellchecker(inputText);
+  let synonyms = GetNounSyns(inputText);
+  let unfiltered = inputArray.concat(spellChecked, synonyms)
+  let inputList = filtered(unfiltered);
+  
+  //console.log(inputList);
 
   // determine the type of input (question or statement)
   let category = IsQuestion(inputText) ? "Q" : "S";
@@ -117,7 +123,7 @@ function GetResponse(inputText, lastResponse) {
 
   // get each matched topic in the response tree and
   // add all the possible responses to the response list
-  inputArray.forEach(input => {
+  inputList.forEach(input => {
     let topicTree = sentimentTree.getSubTree(input);
     if (topicTree !== undefined) {
       topicTree.children.forEach(topic => {
@@ -244,11 +250,23 @@ function GetNouns(sentence){
 function GetNounSyns(sentence){
   let nouns = GetNouns(sentence); 
   let syns = [];
-  nouns.forEach(e=> {
-    let list = GetSyns(e);
-    list.forEach(f => syns.push(f));
+    nouns.forEach(e=> {
+      let list = GetSyns(e);
+      list = filtered(list);
+      list.forEach(f => syns.push(f));
   })
   return syns;
+}
+
+// remove undefined from array
+function filtered(array){
+  if(array !== undefined){
+    let result = array.filter(function(e) {return e})
+    return result;
+}
+  else{
+    return []
+  }
 }
 
 function examples(){
