@@ -212,6 +212,34 @@ function Ngrams(sentence) {
   return ngrams.bigrams(sentence);
 }
 
+function GetSyns(word){
+  var synonyms = require("synonyms");
+  let syns = synonyms(word,"n");
+  return syns;
+}
+
+function GetNouns(sentence){
+  let tagged = POSTagger(TokenizeString(sentence));
+  let nouns = [];
+  (tagged.taggedWords).forEach(e => {
+    let test = (e.tag).toString();
+    if (test === ("NN")){
+      nouns.push(e.token);
+    }
+  })
+  return nouns;
+}
+
+function GetNounSyns(sentence){
+  let nouns = GetNouns(sentence); 
+  let syns = [];
+  nouns.forEach(e=> {
+    let list = GetSyns(e);
+    list.forEach(f => syns.push(f));
+  })
+  return syns;
+}
+
 function examples(){
   const exStr = "This is a sentence about a lovely goat named Billy and his friend named Wendy."
   const exStr2 = "Ugh I hate stupid evil trolls."
@@ -226,3 +254,5 @@ function examples(){
   console.log("TokenizeString:\n", tokens);
   console.log("TokenizeAndStem:\n", TokenizeAndStem(exStr));
 }
+
+   
