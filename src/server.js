@@ -3,6 +3,8 @@ var cors = require('cors');
 var fs = require('fs');
 var Papa = require('papaparse');
 var { WordTokenizer } = require('natural');
+var synonyms = require("synonyms");
+let natural = require('natural');
 
 const app = express();
 app.use(cors());
@@ -107,7 +109,7 @@ function GetResponse(inputText, lastResponse) {
   let responseList = [];
   let inputArray = TokenizeString(inputText.toLowerCase());
   let spellChecked = Spellchecker(inputText);
-  let synonyms = GetNounSyns(inputText);
+  let synonyms = GetNounAndVerbSyns(inputText);
   let unfiltered = inputArray.concat(spellChecked, synonyms)
   let inputList = filtered(unfiltered);
   
@@ -170,7 +172,6 @@ function TokenizeString(txt) {
 
 // split string into stemmed array of strings, also removes stopwords
 function TokenizeAndStem(txt) {
-  let natural = require('natural');
   natural.PorterStemmer.attach();
   return txt.tokenizeAndStem();
 }
@@ -184,7 +185,6 @@ function IsQuestion(txt) {
 // spellcheck returns list of corrections sorted in order of decreasing probability, only matches to words in our generated tree(ie. csv used to build it)
 // currently using edit distance of 1 for maximum speed
 function Spellcheck(word){
-  let natural = require('natural');
   var spellcheck = new natural.Spellcheck(dictionary);
   return spellcheck.getCorrections(word,1);
 }
@@ -201,7 +201,6 @@ function Spellchecker(sentence){
 
 //input array of tokens, return JSON with token and POS tag
 function POSTagger(tokenizedString){
-  let natural = require("natural");  
   const language = "../node_modules/natural/lib/natural/brill_pos_tagger/data/English/lexicon_from_posjs.json"
   const rules = "../node_modules/natural/lib/natural/brill_pos_tagger/data/English/tr_from_posjs.txt"
   const defaultCategory = 'N';
@@ -223,32 +222,32 @@ function GetSentiment(tokenizedString) {
 
 //input string and output array of bigrams
 function Ngrams(sentence) {
-  let natural = require("natural");
   let ngrams = natural.NGrams;
   return ngrams.bigrams(sentence);
 }
 
 function GetSyns(word){
-  var synonyms = require("synonyms");
-  let syns = synonyms(word,"n");
-  return syns;
+  let nSyns = synonyms(word,"n") || [];
+  let vSyns = synonyms(word,"v") || [];
+  return nSyns.concat(vSyns);
 }
 
-function GetNouns(sentence){
+function GetNounsAndVerbs(sentence){
   let tagged = POSTagger(TokenizeString(sentence));
+  let tagArr = ["NN","NNS","NNP","NNPS","VB","VDB","VBN","VBP","VBD","VBZ"];
   let nouns = [];
   (tagged.taggedWords).forEach(e => {
     let test = (e.tag).toString();
-    if (test === ("NN")){
+    if (tagArr.includes(test)){
       nouns.push(e.token);
     }
   })
   return nouns;
 }
 
-//takes inputted sentence and returns array of strings with all original nouns and synonyms
-function GetNounSyns(sentence){
-  let nouns = GetNouns(sentence); 
+//takes inputted sentence and returns array of strings with all original nouns, verbs and synonyms
+function GetNounAndVerbSyns(sentence){
+  let nouns = GetNounsAndVerbs(sentence); 
   let syns = [];
     nouns.forEach(e=> {
       let list = GetSyns(e);
@@ -283,5 +282,3 @@ function examples(){
   console.log("TokenizeString:\n", tokens);
   console.log("TokenizeAndStem:\n", TokenizeAndStem(exStr));
 }
-
-   
