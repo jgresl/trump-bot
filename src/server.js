@@ -4,7 +4,8 @@ var fs = require('fs');
 var Papa = require('papaparse');
 var { WordTokenizer } = require('natural');
 var synonyms = require("synonyms");
-let natural = require('natural');
+var natural = require('natural');
+const readline = require('readline');
 
 const app = express();
 app.use(cors());
@@ -31,6 +32,7 @@ class TreeNode {
 }
 
 var dictionary = [];
+LoadDictionary();
 var responseTree = GenerateTree('../public/kidconvo.csv');
 
 // generate the response tree from a CSV-formatted text input
@@ -56,7 +58,6 @@ function GenerateTree(fileName) {
         if (!node) {
           node = new TreeNode(txt);
           parent.children.push(node);
-          dictionary.push(txt);
         }
   
         parent = node;
@@ -104,23 +105,23 @@ function PrintTreeRecursive(node, level) {
   });
 }
 
-// returns a string response from the response tree based on the inputText
+// returns a string response from the response tree based on the inputText 
+// TODO: add lowercase
 function GetResponse(inputText, lastResponse) {
   let responseList = [];
-  let inputArray = TokenizeString(inputText.toLowerCase());
   let spellChecked = Spellchecker(inputText);
-  let synonyms = GetNounAndVerbSyns(inputText);
-  let unfiltered = inputArray.concat(spellChecked, synonyms)
-  let inputList = filtered(unfiltered);
+  let synonyms = GetNounAndVerbSyns(spellChecked);
+  let inputList = spellChecked.concat(synonyms);
   
-  //console.log(inputList);
+  //console.log(Spellchecker(inputText));
+  console.log(inputList);
 
   // determine the type of input (question or statement)
   let category = IsQuestion(inputText) ? "Q" : "S";
   let categoryTree = responseTree.getSubTree(category);
 
   // determine the sentiment of input (positive or negative)
-  let sentiment = GetSentiment(inputArray) >= 0 ? "P" : "N";
+  let sentiment = GetSentiment(spellChecked) >= 0 ? "P" : "N";
   let sentimentTree = categoryTree.getSubTree(sentiment);
 
   // get each matched topic in the response tree and
@@ -182,21 +183,24 @@ function IsQuestion(txt) {
   return txt.charAt(txt.length - 1) === '?';
 }
 
-// spellcheck returns list of corrections sorted in order of decreasing probability, only matches to words in our generated tree(ie. csv used to build it)
-// currently using edit distance of 1 for maximum speed
+// spellcheck returns list of corrections sorted in order of decreasing probability
+// second parameter in getCorrections is edit distance
 function Spellcheck(word){
   var spellcheck = new natural.Spellcheck(dictionary);
-  return spellcheck.getCorrections(word,1);
+  return spellcheck.getCorrections(word,2);
 }
 
-// input sentence and return array of words, first match to each word of length > 4 that is in dictionary(csv)
+// input sentence and return array of words including original words, first match to each word of length 3 that is in dictionary
 function Spellchecker(sentence){
   let sent = TokenizeString(sentence);
   let arr = [];
   sent.forEach(e => {
-    if (e.length > 4)
-      arr.push(Spellcheck(e)[0])});
-  return arr;
+    if (e.length > 3){
+      if(!(dictionary.includes(e)))
+        arr.push(Spellcheck(e)[0])
+    }
+    });
+  return filtered(sent.concat(arr));
 }
 
 //input array of tokens, return JSON with token and POS tag
@@ -206,10 +210,12 @@ function POSTagger(tokenizedString){
   const defaultCategory = 'N';
   const defaultCategoryCapitalized = 'NNP';
 
+  let tS = filtered(tokenizedString);
+
   let lexicon = new natural.Lexicon(language, defaultCategory, defaultCategoryCapitalized);
   let ruleSet = new natural.RuleSet(rules);
   let tagger = new natural.BrillPOSTagger(lexicon, ruleSet);
-  return tagger.tag(tokenizedString);
+  return tagger.tag(tS);
 }
 
 //input array of strings, returns range of [-5,5] based on positive/negative sentiment of input (normalized so will likely land between [-1,1] unless explicitly positive/negative)
@@ -228,12 +234,14 @@ function Ngrams(sentence) {
 
 function GetSyns(word){
   let nSyns = synonyms(word,"n") || [];
+  let nSynsMax3 = nSyns.slice(0,3);
   let vSyns = synonyms(word,"v") || [];
-  return nSyns.concat(vSyns);
+  let vSynsMax3 = vSyns.slice(0,3);
+  return nSynsMax3.concat(vSynsMax3);
 }
 
-function GetNounsAndVerbs(sentence){
-  let tagged = POSTagger(TokenizeString(sentence));
+function GetNounsAndVerbs(tokenizedString){
+  let tagged = POSTagger(tokenizedString);
   let tagArr = ["NN","NNS","NNP","NNPS","VB","VDB","VBN","VBP","VBD","VBZ"];
   let nouns = [];
   (tagged.taggedWords).forEach(e => {
@@ -266,6 +274,18 @@ function filtered(array){
   else{
     return []
   }
+}
+
+function LoadDictionary(){
+  let fileName = "../public/dictionary.dic"
+  const readInterface = readline.createInterface({
+    input: fs.createReadStream(fileName),
+    output: process.stdout,
+    console: false
+  });
+  readInterface.on('line', function(line){
+    dictionary.push(line);
+  });
 }
 
 function examples(){
