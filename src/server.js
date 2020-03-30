@@ -169,7 +169,6 @@ function GetRandomElement(arr) {
 function ProcessInput(txt) {
   let tokenizedString = TokenizeString(txt);
   let spellChecked = SpellcheckInput(tokenizedString);
-  console.log(spellChecked);
   let synonyms = GetSynonyms(spellChecked);
   return spellChecked.concat(synonyms);
 }
