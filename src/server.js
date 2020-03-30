@@ -169,6 +169,7 @@ function GetRandomElement(arr) {
 function ProcessInput(txt) {
   let tokenizedString = TokenizeString(txt);
   let spellChecked = SpellcheckInput(tokenizedString);
+  console.log(spellChecked);
   let synonyms = GetSynonyms(spellChecked);
   return spellChecked.concat(synonyms);
 }
@@ -201,7 +202,9 @@ function SpellcheckInput(tokenizedString) {
     if (str.length > 3) {
       if (!dictionary.includes(str)) {
         let corrections = spellchecker.getCorrections(str, 2);
-        result.push(corrections[0]);
+        if (corrections.length > 0) {
+          result.push(corrections[0]);
+        }
       }
     }
   });
