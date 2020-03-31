@@ -26,6 +26,16 @@ In order to allow customizable and efficient data entry for new responses, our c
 #### Demonstration
 ![Imgur](https://imgur.com/0q0dkVQ.png)
 
+### Input Spellchecking
+Before any response mapping begins, the user input is first processed through a variety of natural language functions to improve the accuracy and breadth of possible responses. The first step in this input pre-processing is to spellcheck the user's input. The algorithm never *replaces* words in the user's input, in case a word was intentionally mis-spelled or was a proper noun not found in the English dictionary. Instead, it *adds* spelling corrections to the list of comparison words to increase the range of inputs that can be correctly mapped.
+#### Demonstration
+![INSERT IMAGE HERE]()
+
+### Parts of Speech Analysis
+Once the input is spellchecked, the chatbot parses the list of input words and filters out relevant nouns and verbs for use in synonym mapping. This intermediate processing step is done for mapping optimization, to ensure that synonyms are only generated for key words in the sentence and the number of comparisons does not increase exponentially. As with spellchecking, words directly inputted by the user are never removed from the comparison in order to give users better control and avoid accidental mis-pruning.
+#### Demonstration
+Since this is an intermediate optimization step, it does not have a direct impact on the chatbot output but rather the performance. Check out [http://209.121.94.31:5000/](http://209.121.94.31:5000/) to experience the performance of TrumpBot yourself!
+
 ### Question vs Statement Checks
 The response mapping algorithm first determines if the user's input is a question or a statement based on their use of question marks. It then uses that result to efficiently filter out appropriate responses to the user's input.
 #### Demonstration
@@ -35,8 +45,6 @@ The response mapping algorithm first determines if the user's input is a questio
 Once the chatbot has determined whether the user input is a question or a statement, it proceeds to analyze the sentiment of the input. This determination - whether it finds the result to be positive, negative or neutral - influences the response of the chatbot appropriately. TrumpBot doesn't like being insulted!
 #### Demonstration
 ![INSERT IMAGE HERE]()
-
-###
 
 ### Generic Response Mapping
 TrumpBot is designed to handle a variety of user input and can map a large range of possible inputs to a small set of outputs. However, it can still fail to find a suitable response. In this case, the TrumpBot defaults to a list of generic responses suited to a wide variety of unknown inputs.
