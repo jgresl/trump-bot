@@ -59,6 +59,11 @@ function GenerateTree(fileName) {
 
       // for each string in each subarray, add to tree
       row.forEach(txt => {
+        // if the text contains only 1 word, make it lowercase
+        if (txt.split(' ').length === 1) {
+          txt = txt.toLowerCase();
+        }
+
         // check if the string already exists in the tree
         let node = parent.getSubTree(txt);
 
@@ -120,11 +125,11 @@ function GetResponse(inputText, lastResponse) {
   console.log(processedInput);
 
   // determine the type of input (question or statement)
-  let category = IsQuestion(inputText) ? 'Q' : 'S';
+  let category = IsQuestion(inputText) ? 'q' : 's';
   let categoryTree = responseTree.getSubTree(category);
 
   // determine the sentiment of input (positive or negative)
-  let sentiment = GetSentiment(processedInput) >= 0 ? 'P' : 'N';
+  let sentiment = GetSentiment(processedInput) >= 0 ? 'p' : 'n';
   let sentimentTree = categoryTree.getSubTree(sentiment);
 
   // get each matched topic in the response tree and
@@ -170,7 +175,8 @@ function ProcessInput(txt) {
   let tokenizedString = TokenizeString(txt);
   let spellChecked = SpellcheckInput(tokenizedString);
   let synonyms = GetSynonyms(spellChecked);
-  return spellChecked.concat(synonyms);
+  let result = spellChecked.concat(synonyms);
+  return result.map(str => { return str.toLowerCase() });
 }
 
 // split string into a tokenized array of strings
