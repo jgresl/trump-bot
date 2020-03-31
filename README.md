@@ -16,10 +16,10 @@ In this application, the user can "communicate" with the US president, Donald Tr
 ### Dynamic User Interface
 The TrumpBot features a beautiful interactive UI that mimics a messaging application. This includes a complete message history and animated messaging with simulated response delays to make the user feel as if Trump is really taking the time to type out a message.
 #### Demonstration
-INSERT GIF HERE
+![INSERT GIF HERE]()
 
 ### External Web Hosting
-TrumpBot is hosted on an external web server for live production use through both the browser client and Slack bot integration. You can access the most recent version of the chatbot hosted here: `http://209.121.94.31:5000/`
+TrumpBot is hosted on an external web server for live production use through both the browser client and Slack bot integration. You can access the most recent version of the chatbot hosted here: [http://209.121.94.31:5000/](http://209.121.94.31:5000/)
 
 ### CSV Data Pre-processing
 In order to allow customizable and efficient data entry for new responses, our chatbot uses a server-side CSV data file which is mapped to a response tree at runtime. By nesting responses in a tree structure, the chatbot can map user input to the appropriate response in a fraction of a second even with a large bank of possible responses.
@@ -29,9 +29,20 @@ In order to allow customizable and efficient data entry for new responses, our c
 ### Question vs Statement Checks
 The response mapping algorithm first determines if the user's input is a question or a statement based on their use of question marks. It then uses that result to efficiently filter out appropriate responses to the user's input.
 #### Demonstration
-- [x] Determines if the input is a question or a statement
-- [x] Adds all possible responses to the response list
-- [x] Adds generic responses to the repsonse list when no topics are matched
+![INSERT IMAGE HERE]()
+
+### Sentiment Analysis
+Once the chatbot has determined whether the user input is a question or a statement, it proceeds to analyze the sentiment of the input. This determination - whether it finds the result to be positive, negative or neutral - influences the response of the chatbot appropriately. TrumpBot doesn't like being insulted!
+#### Demonstration
+![INSERT IMAGE HERE]()
+
+###
+
+### Generic Response Mapping
+TrumpBot is designed to handle a variety of user input and can map a large range of possible inputs to a small set of outputs. However, it can still fail to find a suitable response. In this case, the TrumpBot defaults to a list of generic responses suited to a wide variety of unknown inputs.
+#### Demonstration
+![INSERT IMAGE HERE]()
+
 - [x] Returns a random response from the response list
 - [x] Can handle a conversation with up to 30 unique repsonses
 
