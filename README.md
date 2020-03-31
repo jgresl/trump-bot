@@ -13,9 +13,22 @@ An interactive conversational agent that responds to user input. The agent can "
 In this application, the user can "communicate" with the US president, Donald Trump.
 
 ## Features
-- [x] Hosted on an external web server `http://209.121.94.31:5000/`
-- [x] Basic user interface that accepts input and displays output in the web browser
-- [x] Generates a response tree from a prefabricated CSV file
+### Dynamic User Interface
+The TrumpBot features a beautiful interactive UI that mimics a messaging application. This includes a complete message history and animated messaging with simulated response delays to make the user feel as if Trump is really taking the time to type out a message.
+#### Demonstration
+INSERT GIF HERE
+
+### External Web Hosting
+TrumpBot is hosted on an external web server for live production use through both the browser client and Slack bot integration. You can access the most recent version of the chatbot hosted here: `http://209.121.94.31:5000/`
+
+### CSV Data Pre-processing
+In order to allow customizable and efficient data entry for new responses, our chatbot uses a server-side CSV data file which is mapped to a response tree at runtime. By nesting responses in a tree structure, the chatbot can map user input to the appropriate response in a fraction of a second even with a large bank of possible responses.
+#### Demonstration
+![Imgur](https://imgur.com/0q0dkVQ.png)
+
+### Question vs Statement Checks
+The response mapping algorithm first determines if the user's input is a question or a statement based on their use of question marks. It then uses that result to efficiently filter out appropriate responses to the user's input.
+#### Demonstration
 - [x] Determines if the input is a question or a statement
 - [x] Adds all possible responses to the response list
 - [x] Adds generic responses to the repsonse list when no topics are matched
