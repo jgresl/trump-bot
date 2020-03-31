@@ -41,7 +41,7 @@ class TreeNode {
 
 var dictionary = [];
 LoadDictionary();
-var responseTree = GenerateTree('../public/kidconvo.csv');
+var responseTree = GenerateTree('../public/treeinput.csv');
 
 // generate the response tree from a CSV-formatted text input
 function GenerateTree(fileName) {
