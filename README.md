@@ -30,12 +30,14 @@ Given that React is a heavily component-based architecture, our code does not fo
 
 ## Build instructions
 
-  1. Clone the project to a local repository:   `git clone https://github.com/jgresl/cosc310.git`
-  2. Navigate to the Java directory: `cd cosc310`
+  1. Clone the project to a local repository: `git clone https://github.com/jgresl/cosc310.git`
+  2. Navigate to the project directory: `cd cosc310`
   3. Ensure node.js is installed: https://nodejs.org/en/
-  3. Ensure the required npm libraries are installed: `npm install`
-  4. Start the program for development: `npm start`
-  5. Build the program for production: `npm run build`
+  4. Ensure the required npm libraries are installed: `npm install`
+  5. Start the client: `npm start`
+  6. Navigate to the source directory: `cd src`
+  7. Start the server locally: `node server.js`
+  8. Build the program for production: `npm run build`
 
 ## Sample Output
 Check out [this example file](testedoutput.txt) for sample output.
