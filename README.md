@@ -36,6 +36,11 @@ Once the input is spellchecked, the chatbot parses the list of input words and f
 #### Demonstration
 Since this is an intermediate optimization step, it does not have a direct impact on the chatbot output but rather the performance. Check out [http://209.121.94.31:5000/](http://209.121.94.31:5000/) to experience the performance of TrumpBot yourself!
 
+### Synonym Mapping
+The final step of input pre-processing is generating a list of synonyms from user input. This uses Parts of Speech and spellchecking to optimize performance and give the highest quality responses as consistently as possible. Each noun and verb and checked against a dictionary and any matched synonyms are added to the list of comparison words for the response mapping algorithm.
+#### Demonstration
+![INSERT IMAGE HERE]()
+
 ### Question vs Statement Checks
 The response mapping algorithm first determines if the user's input is a question or a statement based on their use of question marks. It then uses that result to efficiently filter out appropriate responses to the user's input.
 #### Demonstration
@@ -46,13 +51,20 @@ Once the chatbot has determined whether the user input is a question or a statem
 #### Demonstration
 ![INSERT IMAGE HERE]()
 
+### Categorized String Matching
+The key step of the response mapping algorithm is to take the pre-processed user input and map it to the question-and-sentiment-filtered sub-section of the response tree. In simple terms, the algorithm matches a list of words extended from the original user input to a list of possible responses. A response is then randomly chosen and returned from this list of possible matched responses.
+#### Demonstration
+![INSERT IMAGE HERE]()
+
+### Over 100 Unique Responses and Dozens of Topics
+The TrumpBot offers a vast array of unique responses corresponding to a wide variety of topics relating to Donald Trump. These are carefully mapped to using natural word processing and a pre-generated response tree.
+#### Demonstration
+![Example](https://i.imgur.com/Ldf14zS.png)
+
 ### Generic Response Mapping
 TrumpBot is designed to handle a variety of user input and can map a large range of possible inputs to a small set of outputs. However, it can still fail to find a suitable response. In this case, the TrumpBot defaults to a list of generic responses suited to a wide variety of unknown inputs.
 #### Demonstration
 ![INSERT IMAGE HERE]()
-
-- [x] Returns a random response from the response list
-- [x] Can handle a conversation with up to 30 unique repsonses
 
 ## Design Choices
 We used the React framework to build our appication because it is a powerful tool for creating interactive user interfaces. The framework permits third-party npm libraries. Further, the project is easily optimized into a build file for production. These benefits make React an optimal choice for a chatbot application.
