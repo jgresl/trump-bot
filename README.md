@@ -12,6 +12,26 @@
 An interactive conversational agent that responds to user input. The agent can "understand" sentences typed in by the user.
 In this application, the user can "communicate" with the US president, Donald Trump.
 
+## Design Choices
+We used the React framework to build our appication because it is a powerful tool for creating interactive user interfaces. The framework permits third-party npm libraries. Further, the project is easily optimized into a build file for production. These benefits make React an optimal choice for a chatbot application.
+
+## Class Organization
+Given that React is a heavily component-based architecture, our code does not follow a standard object oriented flow. Instead, we have a main App class which is a ReactComponent that we use to encapsulate our webpage design and event functionality. In addition, we have several functions in the main App.js file which serve to generate the response tree and determine the appropriate output of the chatbot. The App class calls these functions from event methods such as when the user enters a line of text. We also use a simple TreeNode class for our tree datastructure which simply contains a list of child nodes and its data. This is initialized at runtime with data from a specified CSV file which contains our hand-written responses mapped to certain keywords.
+
+## Build instructions
+
+  1. Clone the project to a local repository: `git clone https://github.com/jgresl/cosc310.git`
+  2. Navigate to the project directory: `cd cosc310`
+  3. Ensure node.js is installed: https://nodejs.org/en/
+  4. Ensure the required npm libraries are installed: `npm install`
+  5. Start the client: `npm start`
+  6. Navigate to the source directory: `cd src`
+  7. Start the server locally: `node server.js`
+  8. Build the program for production: `npm run build`
+
+## Sample Output
+Check out [this example file](testedoutput.txt) for sample output.
+
 ## Features
 ### Dynamic User Interface
 The TrumpBot features a beautiful interactive UI that mimics a messaging application. This includes a complete message history and animated messaging with simulated response delays to make the user feel as if Trump is really taking the time to type out a message.
@@ -65,26 +85,6 @@ The TrumpBot offers a vast array of unique responses corresponding to a wide var
 TrumpBot is designed to handle a variety of user input and can map a large range of possible inputs to a small set of outputs. However, it can still fail to find a suitable response. In this case, the TrumpBot defaults to a list of generic responses suited to a wide variety of unknown inputs.
 #### Demonstration
 ![INSERT IMAGE HERE]()
-
-## Design Choices
-We used the React framework to build our appication because it is a powerful tool for creating interactive user interfaces. The framework permits third-party npm libraries. Further, the project is easily optimized into a build file for production. These benefits make React an optimal choice for a chatbot application.
-
-## Class Organization
-Given that React is a heavily component-based architecture, our code does not follow a standard object oriented flow. Instead, we have a main App class which is a ReactComponent that we use to encapsulate our webpage design and event functionality. In addition, we have several functions in the main App.js file which serve to generate the response tree and determine the appropriate output of the chatbot. The App class calls these functions from event methods such as when the user enters a line of text. We also use a simple TreeNode class for our tree datastructure which simply contains a list of child nodes and its data. This is initialized at runtime with data from a specified CSV file which contains our hand-written responses mapped to certain keywords.
-
-## Build instructions
-
-  1. Clone the project to a local repository: `git clone https://github.com/jgresl/cosc310.git`
-  2. Navigate to the project directory: `cd cosc310`
-  3. Ensure node.js is installed: https://nodejs.org/en/
-  4. Ensure the required npm libraries are installed: `npm install`
-  5. Start the client: `npm start`
-  6. Navigate to the source directory: `cd src`
-  7. Start the server locally: `node server.js`
-  8. Build the program for production: `npm run build`
-
-## Sample Output
-Check out [this example file](testedoutput.txt) for sample output.
 
 ## Contributors
 - **Jaden Balogh**
