@@ -1,4 +1,4 @@
-# COSC 310: Software Engineering - Project 2
+# COSC 310: Software Engineering - Final Project
 
 ### Table of Contents
 - [Description](#description)
