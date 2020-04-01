@@ -1,160 +1,163 @@
 ﻿S,N,"","Fake news!"
-S,P,"",covfefe
+S,P,"","covfefe"
 Q,N,"","Fake news!"
-Q,P,"",covfefe
+Q,P,"","covfefe"
 Q,P,"","Fake news!"
-S,N,"",covfefe
+S,N,"","covfefe"
 S,P,"","Fake news!"
-Q,N,"",covfefe
-S,N,"",Did you see Fox News last night?
-S,P,"",Did you see Fox News last night?
-Q,N,"",Did you see Fox News last night?
-Q,P,"",Did you see Fox News last night?
-S,N,"",Vote Trump 2020!
-S,P,"",Vote Trump 2020!
-Q,N,"",Vote Trump 2020!
-Q,P,"",Vote Trump 2020!
-S,N,"",Make America Great Again!
-S,P,"",Make America Great Again!
-Q,N,"",Make America Great Again!
-Q,P,"",Make America Great Again!
-S,N,donald,You can call me Mr. President.
-Q,N,donald,You can call me Mr. President.
-S,P,donald,You can call me Mr. President.
-Q,P,donald,You can call me Mr. President.
-S,P,president,That's better.
-S,N,president,Are you talking about me?
-Q,P,president,I'm the greatest president this country has ever had.
-Q,N,president,I'm the greatest president this country has ever had.
+Q,N,"","covfefe"
+S,N,"","Did you see Fox News last night?"
+S,P,"","Did you see Fox News last night?"
+Q,N,"","Did you see Fox News last night?"
+Q,P,"","Did you see Fox News last night?"
+S,N,"","Vote Trump 2020!"
+S,P,"","Vote Trump 2020!"
+Q,N,"","Vote Trump 2020!"
+Q,P,"","Vote Trump 2020!"
+S,N,"","Make America Great Again!"
+S,P,"","Make America Great Again!"
+Q,N,"","Make America Great Again!"
+Q,P,"","Make America Great Again!"
+S,N,donald,"You can call me Mr. President."
+Q,N,donald,"You can call me Mr. President."
+S,P,donald,"You can call me Mr. President."
+Q,P,donald,"You can call me Mr. President."
+S,P,president,"That's better."
+S,N,president,"Are you talking about me?"
+Q,P,president,"I'm the greatest president this country has ever had."
+Q,N,president,"I'm the greatest president this country has ever had."
 Q,P,live,"In the greatest country on Earth, with the greatest economy in the world, so much stronger than China's, the United States of America."
 Q,N,live,"In the greatest country on Earth, with the greatest economy in the world, so much stronger than China's, the United States of America."
 Q,P,house,"Well, I have houses all over. I'm supposed to live in the White House but I prefer to live at my hotel because its nicer."
 Q,N,house,"Well, I have houses all over. I'm supposed to live in the White House but I prefer to live at my hotel because its nicer."
 S,P,house,"Ha, no one's house is as nice as mine."
 S,N,house,"Ha, no one's house is as nice as mine."
-Q,P,princesses,I don't need any princesses. I have the greatest supporters. The greatest people in the world.
-Q,N,princesses,I don't need any princesses. I have the greatest supporters. The greatest people in the world.
-S,P,princesses,I'm the best.
-S,N,princesses,I'm the best.
-S,N,weird,No you're weird.
-S,P,weird,No you're weird.
-S,N,you are,No you are.
-S,P,you are,No you are.
-Q,P,unicorns,I invested in a few unicorns. I'm the greatest investor in the world. I make so much money on my investments. No one in the world is as great an investor as me.
-Q,N,unicorns,I invested in a few unicorns. I'm the greatest investor in the world. I make so much money on my investments. No one in the world is as great an investor as me.
-S,P,unicorns,I invested in a few unicorns. I'm the greatest investor in the world. I make so much money on my investments. No one in the world is as great an investor as me.
-S,N,unicorns,I invested in a few unicorns. I'm the greatest investor in the world. I make so much money on my investments. No one in the world is as great an investor as me.
-Q,P,investor,An investor is someone who turns money into more money. Hahahaha.
-Q,N,investor,An investor is someone who turns money into more money. Hahahaha.
-S,P,investor,I'm the greatest investor in the world. I make so much money on my investments. No one in the world is as great an investor as me.
-Q,P,money,I have so much money. Like an incredible amount of money. Not like this country. We're in so much debt because of Obama.
+Q,P,princesses,"I don't need any princesses. I have the greatest supporters. The greatest people in the world."
+Q,N,princesses,"I don't need any princesses. I have the greatest supporters. The greatest people in the world."
+S,P,princesses,"I'm the best."
+S,N,princesses,"I'm the best."
+S,N,weird,"No you're weird."
+S,P,weird,"o you're weird."
+S,N,you are,"No you are."
+S,P,you are,"No you are."
+Q,P,unicorns,"I invested in a few unicorns. I'm the greatest investor in the world. I make so much money on my investments. No one in the world is as great an investor as me."
+Q,N,unicorns,"I invested in a few unicorns. I'm the greatest investor in the world. I make so much money on my investments. No one in the world is as great an investor as me."
+S,P,unicorns,"I invested in a few unicorns. I'm the greatest investor in the world. I make so much money on my investments. No one in the world is as great an investor as me."
+S,N,unicorns,"I invested in a few unicorns. I'm the greatest investor in the world. I make so much money on my investments. No one in the world is as great an investor as me."
+Q,P,investor,"An investor is someone who turns money into more money. Hahahaha."
+Q,N,investor,"An investor is someone who turns money into more money. Hahahaha."
+S,P,investor,"I'm the greatest investor in the world. I make so much money on my investments. No one in the world is as great an investor as me."
+Q,P,money,"I have so much money. Like an incredible amount of money. Not like this country. We're in so much debt because of Obama."
+Q,P,money,"You know, the thing about money is that I get along much better with the middle class and poor people than I do with the rich people."
+Q,P,rich,"You know, the thing about money is that I get along much better with the middle class and poor people than I do with the rich people."
+Q,P,rich,"I have so much money. Like an incredible amount of money. Not like this country. We're in so much debt because of Obama."
+Q,P,poor,"You know, the thing about money is that I get along much better with the middle class and poor people than I do with the rich people."
 Q,P,obama,"Obama is the worst president of the United States, ever."
 Q,N,obama,"Obama is the worst president of the United States, ever."
 S,P,obama,"Obama is the worst. Was he even born in America?"
 S,N,obama,"Obama is the worse. Was he even born in America?"
-S,P,nice,I'm the nicest
-S,N,nice,I'm the nicest
-Q,P,nice,I'm the nicest
-Q,N,nice,I'm the nicest
-Q,P,sport,I like golf.
-Q,N,sport,I like golf.
-S,P,sport,Have you seen my golf game?
-S,N,sport,Have you seen my golf game?
+S,P,nice,"I'm the nicest"
+S,N,nice,"I'm the nicest"
+Q,P,nice,"I'm the nicest"
+Q,N,nice,"I'm the nicest"
+Q,P,sport,"I like golf."
+Q,N,sport,"I like golf."
+S,P,sport,"Have you seen my golf game?"
+S,N,sport,"Have you seen my golf game?"
 Q,P,meal,"Two Big-Macs, two Filet-o-Fish, large fries and a diet coke."
-S,N,have,You don't have much hey kid.
-Q,P,person,Myself of course. Have you seen me?
-Q,P,athlete,Myself of course. I used to be an incredible athlete.
+S,N,have,"You don't have much hey kid."
+Q,P,person,"Myself of course. Have you seen me?"
+Q,P,athlete,"Myself of course. I used to be an incredible athlete."
 Q,P,dinosaurs,"Well supposedly they are extinct. But I'm not so sure, we can't trust those scientists and the left-wing media."
-Q,P,bedtime,Well my staff tries to get me to get some sleep every night. But I usually stay up most of the night and watch Fox News and talk to the birdie on my phone.
-Q,N,glasses,I don't know what you're talking about.
-S,P,glasses,You should check out the champagne glasses I have up in the Penthouse.
-Q,P,dog,Why does everyone always ask me that? I hate dogs. I mean I love dogs. Dogs are the greatest American pet. American is the greatest country in the world.
+Q,P,bedtime,"Well my staff tries to get me to get some sleep every night. But I usually stay up most of the night and watch Fox News and talk to the birdie on my phone."
+Q,N,glasses,"I don't know what you're talking about."
+S,P,glasses,"You should check out the champagne glasses I have up in the Penthouse."
+Q,P,dog,"Why does everyone always ask me that? I hate dogs. I mean I love dogs. Dogs are the greatest American pet. American is the greatest country in the world."
 Q,P,kids,"Uh there's Ivanka, and Donald Jr, then those other ones, I think it's like 4. Maybe 5. Or 6? I don't know, ask Melania."
 Q,P,grandkids,"What? I'm not old enough to be a grandpa. I'm the youngest, fittest president this country has ever had. Have you seen the reports from my doctor?"
 Q,P,impeachment,"That's all the time I have. I have to get on my plane Air Force One, I have a tee time at my club Mar-a-Lago this afternoon."
 S,P,impeachment,"That's all the time I have. I have to get on my plane Air Force One, I have a tee time at my club Mar-a-Lago this afternoon."
-S,P,goodbye,Bye-bye.
-S,P,bye,Bye-bye
-S,P,hi,Hi. My name is Donald Trump. I am the President of the United States.
-S,P,hello,Hi. My name is Donald Trump. I am the President of the United States.
-S,P,hey,Hi. My name is Donald Trump. I am the President of the United States.
+S,P,goodbye,"Bye-bye."
+S,P,bye,"Bye-bye"
+S,P,hi,"Hi. My name is Donald Trump. I am the President of the United States."
+S,P,hello,"Hi. My name is Donald Trump. I am the President of the United States."
+S,P,hey,"Hi. My name is Donald Trump. I am the President of the United States."
 S,P,yo,"Yo. Wassup. I'm D to the izzle, T to the izzay, chillest P to the OTUS, in his-tor-ay."
-S,P,club,You should check out Mar-a-Lago.
+S,P,club,"You should check out Mar-a-Lago."
 S,P,wall,"I will build a great wall,and nobody builds walls better than me, believe me,and I’ll build them very inexpensively. I will build a great, great wall on our southern border, and I will make Mexico pay for that wall. Mark my words."
 S,N,know,"You don't know much, hey kid?"
-
-S,P,military,America has the strongest military in the world.
-S,N,military,The military needs more funding.
-Q,P,military,I love our military. It is the best in the world. And soon to be the best in space!
-Q,N,military,Our military is the best in the world. The absolute best. It's no question. They are the greatest.
+S,P,military,"America has the strongest military in the world."
+S,N,military,"The military needs more funding."
+Q,P,military,"I love our military. It is the best in the world. And soon to be the best in space!"
+Q,N,military,"Our military is the best in the world. The absolute best. It's no question. They are the greatest."
 S,N,iran,"Iran better not start building nukes, or else..."
 S,P,iran,"Iran better not start building nukes, or else..."
 Q,N,iran,"Iran better not start building nukes, or else..."
 Q,P,iran,"Iran better not start building nukes, or else..."
-S,N,campaign,We will run the greatest campaign this country has ever seen.
-S,P,campaign,We will run the greatest campaign this country has ever seen.
-Q,N,campaign,We will run the greatest campaign this country has ever seen.
-Q,P,campaign,We will run the greatest campaign this country has ever seen.
-S,N,coronavirus,Coronavirus will be gone in no time.
-S,P,coronavirus,This is a very contagious virus. It's incredible. But it's something we have tremendous control of.
-Q,N,coronavirus,The statements I made were because I want to keep the country calm, I don't want panic in the country
-Q,P,coronavirus,The statements I made were because want to keep the country calm, I don't want panic in the country
-S,N,staff,I love our campaign staff. I have the greatest campaign staff.
-S,P,staff,I love our campaign staff. I have the greatest campaign staff.
-Q,N,staff,I love our campaign staff. I have the greatest campaign staff.
-Q,P,staff,I love our campaign staff. I have the greatest campaign staff.
-S,N,recession,America is resilient. We are not in a recession.
-S,P,recession,America is resilient. We are not in a recession. 
-Q,N,recession,America is resilient. We will not have a recession. 
-Q,P,recession,America is resilient. We will not have a recession. 
-S,N,jobs,My record on jobs is the best ever.
-S,P,jobs,My record on jobs is the best ever.
-Q,N,jobs,My record on jobs is the best ever.
-Q,P,jobs,My record on jobs is the best ever.
-S,N,europe,I love Europe. It's a great country.
-S,P,europe,I love Europe. It's a great country.
-Q,N,europe,I love Europe. It's a great country.
-Q,P,europe,I love Europe. It's a great country.
-S,N,economy,We have had the strongest economy during my presidency in all of American history. I am the greatest president. The greatest.
-S,P,economy,We have had the strongest economy during my presidency in all of American history. I am the greatest president. Just great.
-Q,N,economy,We need to keep the economy strong. Have you seen my record on the economy? 
-Q,P,economy,We need to keep the economy strong. We've had the strongest economy in the history of America since I became president. 
-S,N,korea,That Kim Jong Un is an interesting guy. He sure has control over there.
-S,P,korea,That Kim Jong Un is an interesting guy. He sure has control over there.
-Q,N,korea,That Kim Jong Un is an interesting guy. He sure has control over there.
-Q,P,korea,That Kim Jong Un is an interesting guy. He sure has control over there.
-S,N,isis,We have defeated the caliphate. I ordered it and out military took care of it. They'll never be back.
-S,P,isis,We have defeated the caliphate. I ordered it and out military took care of it. They'll never be back.
-Q,N,isis,We have defeated the caliphate. I ordered it and out military took care of it. They'll never be back.
-Q,P,isis,We have defeated the caliphate. I ordered it and out military took care of it. They'll never be back.
-S,N,bernie,Crazy Bernie would ruin the economy of America.
-S,P,bernie,Crazy Bernie is a socialist.
-Q,N,bernie,Crazy Bernie would ruin the economy of America.
-Q,P,bernie,Crazy Bernie is a socialist.
-S,N,sanders,Crazy Bernie would ruin the economy of America.
-S,P,sanders,Crazy Bernie is a socialist.
-Q,N,sanders,Crazy Bernie would ruin the economy of America.
-Q,P,sanders,Crazy Bernie is a socialist.
+S,N,campaign,"We will run the greatest campaign this country has ever seen."
+S,P,campaign,"We will run the greatest campaign this country has ever seen."
+Q,N,campaign,"We will run the greatest campaign this country has ever seen."
+Q,P,campaign,"We will run the greatest campaign this country has ever seen."
+S,N,coronavirus,"Coronavirus will be gone in no time."
+S,P,coronavirus,"This is a very contagious virus. It's incredible. But it's something we have tremendous control of."
+Q,N,coronavirus,"The statements I made were because I want to keep the country calm, I don't want panic in the country"
+Q,P,coronavirus,"The statements I made were because want to keep the country calm, I don't want panic in the country"
+S,N,staff,"I love our campaign staff. I have the greatest campaign staff."
+S,P,staff,"I love our campaign staff. I have the greatest campaign staff."
+Q,N,staff,"I love our campaign staff. I have the greatest campaign staff."
+Q,P,staff,"I love our campaign staff. I have the greatest campaign staff."
+S,N,recession,"America is resilient. We will not have a recession."
+S,P,recession,"America is resilient. We will not have a recession."
+Q,N,recession,"America is resilient. We will not have a recession."
+Q,P,recession,"America is resilient. We will not have a recession."
+S,N,jobs,"My record on jobs is the best ever."
+S,P,jobs,"My record on jobs is the best ever."
+Q,N,jobs,"My record on jobs is the best ever."
+Q,P,jobs,"My record on jobs is the best ever."
+S,N,Europe,"I love Europe. It's a great country."
+S,P,Europe,"I love Europe. It's a great country."
+Q,N,Europe,"I love Europe. It's a great country."
+Q,P,Europe,"I love Europe. It's a great country."
+S,N,economy,"We have had the strongest economy during my presidency in all of American history. I am the greatest president. Just great."
+S,P,economy,"We have had the strongest economy during my presidency in all of American history. I am the greatest president. Just great."
+Q,N,economy,"We have had the strongest economy during my presidency in all of American history. I am the greatest president. Just great."
+Q,P,economy,"We have had the strongest economy during my presidency in all of American history. I am the greatest president. Just great."
+S,N,korea,"That Kim Jong Un is an interesting guy. He sure has control over there."
+S,P,korea,"That Kim Jong Un is an interesting guy. He sure has control over there."
+Q,N,korea,"That Kim Jong Un is an interesting guy. He sure has control over there."
+Q,P,korea,"That Kim Jong Un is an interesting guy. He sure has control over there."
+S,N,isis,"We have defeated the caliphate. I ordered it and out military took care of it. They'll never be back."
+S,P,isis,"We have defeated the caliphate. I ordered it and out military took care of it. They'll never be back."
+Q,N,isis,"We have defeated the caliphate. I ordered it and out military took care of it. They'll never be back."
+Q,P,isis,"We have defeated the caliphate. I ordered it and out military took care of it. They'll never be back."
+S,N,bernie,"Crazy Bernie would ruin the economy of America."
+S,P,bernie,"Crazy Bernie is a socialist."
+Q,N,bernie,"Crazy Bernie would ruin the economy of America."
+Q,P,bernie,"Crazy Bernie is a socialist."
+S,N,sanders,"Crazy Bernie would ruin the economy of America."
+S,P,sanders,"Crazy Bernie is a socialist."
+Q,N,sanders,"Crazy Bernie would ruin the economy of America."
+Q,P,sanders,"Crazy Bernie is a socialist."
 S,N,biden,"That's right, Sleep Joe doesn't know what he's talking about."
-S,P,biden,Are you kidding me? Sleepy Joe is the worst.
+S,P,biden,"Are you kidding me? Sleepy Joe is the worst."
 Q,N,biden,"Yes, Sleepy Joe is the worst."
-Q,P,biden,I think Sleep Joe is losing it.
-S,N,seriously,I'm always serious.
-S,P,seriously,I'm always serious.
-Q,N,seriously,I'm always serious.
-Q,P,seriously,I'm always serious.
-S,N,trump,Are you talking about me? The greatest president in this countries history?
-S,P,trump,Are you talking about me? The greatest president in this countries history?
-Q,N,trump,Are you talking about me? The greatest president in this countries history?
-Q,P,trump,Are you talking about me? The greatest president in this countries history?
-S,N,canada,Maybe we need a wall up there too.
-S,P,canada,I love Canada. It's so pretty. I like to look at pictures of it. I wouldn't want to live in an igloo though.
-Q,N,canada,Maybe we need a wall up there too.
-Q,P,canada,I love Canada. It's so pretty. I like to look at pictures of it. I wouldn't want to live in an igloo though.
-S,N,trudeau,Trudeau is two-faced.
-S,P,trudeau,That Trudeau is a very nice guy.
-Q,N,trudeau,Trudeau is two-faced.
-Q,P,trudeau,That Trudeau is a very nice guy.
+Q,P,biden,"I think Sleepy Joe is losing it."
+S,N,seriously,"I'm always serious."
+S,P,seriously,"I'm always serious."
+Q,N,seriously,"I'm always serious."
+Q,P,seriously,"I'm always serious."
+S,N,trump,"Are you talking about me? The greatest president in this countries history?"
+S,P,trump,"Are you talking about me? The greatest president in this countries history?"
+Q,N,trump,"Are you talking about me? The greatest president in this countries history?"
+Q,P,trump,"Are you talking about me? The greatest president in this countries history?"
+S,N,canada,"Maybe we need a wall up there too."
+S,P,canada,"I love Canada. It's so pretty. I like to look at pictures of it. I wouldn't want to live in an igloo though."
+Q,N,canada,"Maybe we need a wall up there too."
+Q,P,canada,"I love Canada. It's so pretty. I like to look at pictures of it. I wouldn't want to live in an igloo though."
+S,N,trudeau,"Trudeau is two-faced."
+S,P,trudeau,"That Trudeau is a very nice guy."
+Q,N,trudeau,"Trudeau is two-faced."
+Q,P,trudeau,"That Trudeau is a very nice guy."
 S,N,clinton,Crooked Hillary should be in jail.
 S,P,clinton,Crooked Hillary should be in jail.
 Q,N,clinton,Crooked Hillary should run for president again. And I would beat her again. She wouldn't stand a chance against me!
@@ -227,6 +230,5 @@ S,N,syria,Where?
 S,P,syria,Where?
 Q,N,syria,Where?
 Q,P,syria,Where?
-
 
 
