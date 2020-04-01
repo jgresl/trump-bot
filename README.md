@@ -2,10 +2,11 @@
 
 ### Table of Contents
 - [Description](#description)
-- [Features](#features)
 - [Design Choices](#design-choices)
+- [Class Organization](#class-organization)
 - [Build Instructions](#build-instructions)
 - [Sample Output](#sample-output)
+- [Features](#features)
 - [Contributors](#contributors)
 
 ## Description
