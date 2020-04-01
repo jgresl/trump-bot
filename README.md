@@ -91,15 +91,17 @@ TrumpBot is designed to handle a variety of user input and can map a large range
 ![INSERT IMAGE HERE]()
 
 ## Contributors
+
 ### Jaden Balogh
- - **Assignment 2**
+ **Assignment 2**
  - Created base application with react.js
  - Led the weekly scrum meetings
  - Wrote wiki page for react.js
  - Added custom CSV parsing
  - Implemented response text pre-processing
- - Tested and integrated team code changes
- - **Project**
+ - Tested and integrated team code changes 
+ 
+ **Project**
  - Led the weekly scrum meetings
  - Added client-side response history
  - Transitioned all processing functionality to server-side code
@@ -109,6 +111,7 @@ TrumpBot is designed to handle a variety of user input and can map a large range
  - Expanded response tree customization options
  - Designed advanced response mapping using natural language libraries
  - Test and integrate team code changes
+ 
 ### Jonathan Gresl
  - Setup GitHub repository and invited group members
  - Created README template in GitHub
@@ -118,12 +121,14 @@ TrumpBot is designed to handle a variety of user input and can map a large range
  - Added SDLC choice and rational to project document
  - Added SDLC phases and tasks to the project document
  - Added final WBS / Gantt chart to project document
+ 
 ### Michael Crouse
  - Researched chatbot algorithms
  - Created the sample conversation to build on
  - Created the initial text file for the output tree
  - Tested and prepared for the 30 turn conversation
  - Added GitHub commits by user to project document
+ 
 ### Shamus Boulianne
  - Researched chatbot algorithms
  - Implemented the text input processing
