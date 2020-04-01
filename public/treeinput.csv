@@ -158,77 +158,69 @@ S,N,trudeau,"Trudeau is two-faced."
 S,P,trudeau,"That Trudeau is a very nice guy."
 Q,N,trudeau,"Trudeau is two-faced."
 Q,P,trudeau,"That Trudeau is a very nice guy."
-S,N,clinton,Crooked Hillary should be in jail.
-S,P,clinton,Crooked Hillary should be in jail.
-Q,N,clinton,Crooked Hillary should run for president again. And I would beat her again. She wouldn't stand a chance against me!
-Q,P,clinton,Crooked Hillary should run for president again. And I would beat her again. She wouldn't stand a chance against me!
-S,N,hillary,Crooked Hillary should be in jail.
-S,P,hillary,Crooked Hillary should be in jail.
-Q,N,hillary,Crooked Hillary should run for president again. And I would beat her again. She wouldn't stand a chance against me!
-Q,P,hillary,Crooked Hillary should run for president again. And I would beat her again. She wouldn't stand a chance against me!
-S,N,mueller,Witch Hunt!
-S,P,mueller,Witch Hunt!
-Q,N,mueller,Witch Hunt!
-Q,P,mueller,Witch Hunt!
-S,N,russia,Witch Hunt!
-S,P,russia,Witch Hunt!
-Q,N,russia,Witch Hunt!
-Q,P,russia,Witch Hunt!
-S,N,putin,Hey don't talk about my friend Vladimir like that!
-S,P,putin,That Putin looks great with no shirt on!
-Q,N,putin,I've know Putin for a long time. But I'm not sure if we're friends these days.
-Q,P,putin,Putin's an amazing leader of his country. Although not as great as me!
-S,N,nancy,Nasty Nancy is wasting so much time in congress. She doesn't know what she's doing.
-S,P,nancy,Nasty Nancy is the worst.
-Q,N,nancy,I can't stand Nasty Nancy. 
-Q,P,nancy,Nasty Nancy 
-S,N,pelosi,
-S,P,pelosi,
-Q,N,pelosi,
-Q,P,pelosi,
-S,N,media,
-S,P,media,
-Q,N,media,
-Q,P,media,
-S,N,cnn,
-S,P,cnn,
-Q,N,cnn,
-Q,P,cnn,
-S,N,xi,
-S,P,xi,
-Q,N,xi,
-Q,P,xi,
-S,N,quarantine,
-S,P,quarantine,
-Q,N,quarantine,
-Q,P,quarantine,
-S,N,distancing,Please keep 6 ft away from each other.
-S,P,distancing,Please keep 6 ft away from each other.
-Q,N,distancing,I believe it is very important to practice social distancing.
-Q,P,distancing,We all need to practice social distancing to help prevent the spread.
-S,N,magazine,Have you seen the my recent cover on Time?
-S,P,magazine,Have you seen the my recent cover on Time?
-Q,N,magazine,Have you seen the my recent cover on Time?
-Q,P,magazine,Have you seen the my recent cover on Time?
-S,N,millienial,Ugh the snowflakes.
-S,P,millienial,Ugh the snowflakes.
-Q,N,millienial,Ugh the snowflakes.
-Q,P,millienial,Ugh the snowflakes.
-S,N,afghanistan,Where?
-S,P,afghanistan,Where?
-Q,N,afghanistan,Where?
-Q,P,afghanistan,Where?
-S,N,arabia,Where?
-S,P,arabia,Where?
-Q,N,arabia,Where?
-Q,P,arabia,Where?
-S,N,venezuela,Where?
-S,P,venezuela,Where?
-Q,N,venezuela,Where?
-Q,P,venezuela,Where?
-S,N,syria,Where?
-S,P,syria,Where?
-Q,N,syria,Where?
-Q,P,syria,Where?
+S,N,clinton,"Crooked Hillary should be in jail."
+S,P,clinton,"Crooked Hillary should be in jail."
+Q,N,clinton,"Crooked Hillary should run for president again. And I would beat her again. She wouldn't stand a chance against me!"
+Q,P,clinton,"Crooked Hillary should run for president again. And I would beat her again. She wouldn't stand a chance against me!"
+S,N,hillary,"Crooked Hillary should be in jail."
+S,P,hillary,"Crooked Hillary should be in jail."
+Q,N,hillary,"Crooked Hillary should run for president again. And I would beat her again. She wouldn't stand a chance against me!"
+Q,P,hillary,"Crooked Hillary should run for president again. And I would beat her again. She wouldn't stand a chance against me!"
+S,N,mueller,"Witch Hunt!"
+S,P,mueller,"Witch Hunt!"
+Q,N,mueller,"Witch Hunt!"
+Q,P,mueller,"Witch Hunt!"
+S,N,russia,"Witch Hunt!"
+S,P,russia,"Witch Hunt!"
+Q,N,russia,"Witch Hunt!"
+Q,P,russia,"Witch Hunt!"
+S,N,putin,"Hey don't talk about my friend Vladimir like that!"
+S,P,putin,"That Putin looks great with no shirt on!"
+Q,N,putin,"I've know Putin for a long time. But I'm not sure if we're friends these days."
+Q,P,putin,"Putin's an amazing leader of his country. Although not as great as me!"
+S,N,nancy,"Nasty Nancy is wasting so much time in congress. She doesn't know what she's doing."
+S,P,nancy,"Nasty Nancy is the worst."
+Q,N,nancy,"I can't stand Nasty Nancy."
+Q,P,nancy,"Nasty Nancy is the worst"
+S,N,pelosi,"Nasty Nancy is wasting so much time in congress. She doesn't know what she's doing."
+S,P,pelosi,"Nasty Nancy is the worst."
+Q,N,pelosi,"I can't stand Nasty Nancy."
+Q,P,pelosi,"Nasty Nancy is the worst"
+S,N,media,"That left wing media is out to get me."
+S,P,media,"That left wing media is out to get me."
+Q,N,media,"That left wing media is out to get me."
+Q,P,media,"That left wing media is out to get me."
+S,N,cnn,"Fake News Network"
+S,P,cnn,"Fake News Network"
+Q,N,cnn,"Fake News Network"
+Q,P,cnn,"Fake News Network"
+S,N,distancing,"Please keep 6 ft away from each other."
+S,P,distancing,"Please keep 6 ft away from each other."
+Q,N,distancing,"I believe it is very important to practice social distancing."
+Q,P,distancing,"We all need to practice social distancing to help prevent the spread."
+S,N,magazine,"Have you seen the my recent cover on Time?"
+S,P,magazine,"Have you seen the my recent cover on Time?"
+Q,N,magazine,"Have you seen the my recent cover on Time?"
+Q,P,magazine,"Have you seen the my recent cover on Time?"
+S,N,millienial,"Ugh the snowflakes."
+S,P,millienial,"Ugh the snowflakes."
+Q,N,millienial,"Ugh the snowflakes."
+Q,P,millienial,"Ugh the snowflakes."
+S,N,afghanistan,"Where?"
+S,P,afghanistan,"Where?"
+Q,N,afghanistan,"Where?"
+Q,P,afghanistan,"Where?"
+S,N,arabia,"Where?"
+S,P,arabia,"Where?"
+Q,N,arabia,"Where?"
+Q,P,arabia,"Where?"
+S,N,venezuela,"Where?"
+S,P,venezuela,"Where?"
+Q,N,venezuela,"Where?"
+Q,P,venezuela,"Where?"
+S,N,syria,"Where?"
+S,P,syria,"Where?"
+Q,N,syria,"Where?"
+Q,P,syria,"Where?"
 
 
