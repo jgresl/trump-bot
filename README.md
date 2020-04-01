@@ -91,31 +91,44 @@ TrumpBot is designed to handle a variety of user input and can map a large range
 ![INSERT IMAGE HERE]()
 
 ## Contributors
-- **Jaden Balogh**
-  - Created base application with react.js
-  - Generated wiki page for react.js
-  - Implemented text pre-processing
-  - Tested and reviewed code changes
-- **Jonathan Gresl**
-  - Setup GitHub repository and invited group members
-  - Created README template in GitHub
-  - Setup Gantt chart to manage product and sprint backlogs
-  - Setup web server to host production site
-  - Added description and features to the project document
-  - Added SDLC choice and rational to project document
-  - Added SDLC phases and tasks to the project document
-  - Added final WBS / Gantt chart to project document
-- **Michael Crouse**
-  - Researched chatbot algorithms
-  - Created the sample conversation to build on
-  - Created the initial text file for the output tree
-  - Tested and prepared for the 30 turn conversation
-  - Added GitHub commits by user to project document
-- **Shamus Boulianne**
-  - Researched chatbot algorithms
-  - Implemented the text input processing
-  - Implemented the text mapping algorithm
-  - Built a basic text input and output
-  - Implemented text output generation
+### Jaden Balogh
+ - **Assignment 2**
+ - Created base application with react.js
+ - Led the weekly scrum meetings
+ - Wrote wiki page for react.js
+ - Added custom CSV parsing
+ - Implemented response text pre-processing
+ - Tested and integrated team code changes
+ - **Project**
+ - Led the weekly scrum meetings
+ - Added client-side response history
+ - Transitioned all processing functionality to server-side code
+ - Implemented Express server with Get requests
+ - Updated component-based GUI and improve message animations
+ - Integrated React client with server-side functionality
+ - Expanded response tree customization options
+ - Designed advanced response mapping using natural language libraries
+ - Test and integrate team code changes
+### Jonathan Gresl
+ - Setup GitHub repository and invited group members
+ - Created README template in GitHub
+ - Setup Gantt chart to manage product and sprint backlogs
+ - Setup web server to host production site
+ - Added description and features to the project document
+ - Added SDLC choice and rational to project document
+ - Added SDLC phases and tasks to the project document
+ - Added final WBS / Gantt chart to project document
+### Michael Crouse
+ - Researched chatbot algorithms
+ - Created the sample conversation to build on
+ - Created the initial text file for the output tree
+ - Tested and prepared for the 30 turn conversation
+ - Added GitHub commits by user to project document
+### Shamus Boulianne
+ - Researched chatbot algorithms
+ - Implemented the text input processing
+ - Implemented the text mapping algorithm
+ - Built a basic text input and output
+ - Implemented text output generation
 
 [Back to The Top](#cosc-310-software-engineering---project-2)
