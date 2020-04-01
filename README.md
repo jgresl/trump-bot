@@ -61,7 +61,7 @@ Once the input is spellchecked, the chatbot parses the list of input words and f
 Since this is an intermediate optimization step, it does not have a direct impact on the chatbot output but rather the performance. Check out [http://209.121.94.31:5000/](http://209.121.94.31:5000/) to experience the performance of TrumpBot yourself!
 
 ### Synonym Mapping
-The final step of input pre-processing is generating a list of synonyms from user input. This uses Parts of Speech and spellchecking to optimize performance and give the highest quality responses as consistently as possible. Each noun and verb and checked against a dictionary and any matched synonyms are added to the list of comparison words for the response mapping algorithm.
+The final step of input pre-processing is generating a list of synonyms from user input. This uses Parts of Speech and spellchecking to optimize performance and give the highest quality responses as consistently as possible. Each noun and verb is checked against a dictionary and any matched synonyms are added to the list of comparison words for the response mapping algorithm.
 #### Demonstration
 ![INSERT IMAGE HERE]()
 
