@@ -9,8 +9,7 @@
 - [Contributors](#contributors)
 
 ## Description
-An interactive conversational agent that responds to user input. The agent can "understand" sentences typed in by the user.
-In this application, the user can "communicate" with the US president, Donald Trump.
+TrumpBot is an interactive conversational agent that imitates a mock phone conversation between the user and the US president, Donald Trump. This chatbot can be accessed both online in the web browser as well as through Slack as a bot.
 
 ## Design Choices
 The primary functionality of our application exists on the server-side. We use Express server with Node.js to offer a JavaScript-based API to allow connections with multiple forms of client-side interfaces; currently that includes a browser client and Slack bot. The direct integration of npm libraries within the Node framework allowed easy use of existing natural language processing functionality.
@@ -18,7 +17,9 @@ The primary functionality of our application exists on the server-side. We use E
 Our browser client interfaces with our Node.js server through a modern React implementation. The component-based structure of React paired with the state-oriented design of UI in JSX allowed us to create a fluid and simple user interface with minimal code. Furthermore, using JavaScript for both client-side and server-side code greatly decreased the learning curve for our programmers. For our server deployment process, the entire project was easily optimized into a build file for production.
 
 ## Class Organization
-Given that React is a heavily component-based architecture, our code does not follow a standard object oriented flow. Instead, we have a main App class which is a ReactComponent that we use to encapsulate our webpage design and event functionality. In addition, we have several functions in the main App.js file which serve to generate the response tree and determine the appropriate output of the chatbot. The App class calls these functions from event methods such as when the user enters a line of text. We also use a simple TreeNode class for our tree datastructure which simply contains a list of child nodes and its data. This is initialized at runtime with data from a specified CSV file which contains our hand-written responses mapped to certain keywords.
+React is a component-based framework. As such, our code was organized into Component files, which were then used in the main App.js file to define our dynamic state-based user interface. The App.js file encapsulates the full design and event functionality of the browser client.
+
+As a whole, our application uses an asynchronous Client-Server architecture in which the client sends Get messages to the server and awaits an asynchronous response. All of the response generation and input processing happens in the server.js file, which contains Express server hosting and Get handling code, as well as many helper methods interfacing with natural language libraries integrated through npm. We also define the TreeNode class here, used in the response tree datastructure.
 
 ## Build instructions
 
