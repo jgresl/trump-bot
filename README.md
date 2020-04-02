@@ -32,6 +32,32 @@ As a whole, our application uses an asynchronous Client-Server architecture in w
   6. Navigate to the source directory: `cd src`
   7. Start the server locally: `node server.js`
   8. Build the program for production: `npm run build`
+  
+## Instructions for slack bot integration
+  Part 1: Create a slack app
+  1. Go to https://api.slack.com/apps and select `create a new app`
+  2. Name the app `trumpbot`, select the workspace you want the bot to live on, and select `create app`
+  3. Under `add features and functionality` select `bots`
+  4. Select `review scopes to add`
+  5. Scroll down to `bot token scopes` and select `add an OAuth scope`
+  6. Select chat:write
+  7. Scroll to the top of the page and select `install app to workspace` then select `allow`
+  8. This generated a `bot user OAuth access token` which you will need for later
+  9. Navigate to `event subscriptions` found in the menu on the left of the screen
+  10. Toggle `enable events` to on
+  11. Select `subscribe to bot events` then select `add bot user event`
+  12. Select `app_mention`
+  13. Scroll up and enter a `request url`. This will look like `https://your-server/slack/events`. Note that by default the app listens on port 16000
+  14. Navigate to `basic information` found in the menu on the left of the screen
+  15. Scroll down to find the apps `signing secret` and save it for later
+  16. Go to the workspace the bot lives on and add it to a channel
+  
+  Part 2: Deployment
+  1. Follow instructions 1-4 from the 'build instructions' section of the README
+  2. replace the `token` and `signingSecret` values found in the .env file with the ones found during part 1
+  3. Navigate to the source directory: `cd src`
+  4. Start the server: `node server.js`
+  5. Start the bot: `node Slack.js`
 
 ## Sample Output
 Check out [this example file](testedoutput.txt) for sample output.
