@@ -47,10 +47,9 @@ As a whole, our application uses an asynchronous Client-Server architecture in w
   10. Toggle `enable events` to on
   11. Select `subscribe to bot events` then select `add bot user event`
   12. Select `app_mention`
-  13. Scroll up and enter a `request url`. This will look like `https://your-server/slack/events`. Note that by default the app listens on port 16000
-  14. Navigate to `basic information` found in the menu on the left of the screen
-  15. Scroll down to find the apps `signing secret` and save it for later
-  16. Go to the workspace the bot lives on and add it to a channel
+  13. Navigate to `basic information` found in the menu on the left of the screen
+  14. Scroll down to find the apps `signing secret` and save it for later
+  15. Go to the workspace the bot lives on and add it to a channel
   
   Part 2: Deployment
   1. Follow instructions 1-4 from the 'build instructions' section of the README
@@ -58,6 +57,10 @@ As a whole, our application uses an asynchronous Client-Server architecture in w
   3. Navigate to the source directory: `cd src`
   4. Start the server: `node server.js`
   5. Start the bot: `node Slack.js`
+  6. Go once again to the `event subscriptions` page of the slack app creation site
+  7. Enter a `request url`. This will look like `https://your-server/slack/events`. Note that by default the app listens on port 16000
+  8. Select `save changes`
+  9. You should now be able to talk to trump in the channel you added him to by preceeding your message with `@trumpbot`
 
 ## Sample Output
 Check out [this example file](testedoutput.txt) for sample output.
