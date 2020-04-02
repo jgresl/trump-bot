@@ -43,7 +43,7 @@ The TrumpBot features a beautiful interactive UI that mimics a messaging applica
 ![INSERT GIF HERE]()
 
 ### External Web Hosting
-TrumpBot is hosted on an external web server for live production use through both the browser client and Slack bot integration. You can access the most recent version of the chatbot hosted here: [http://209.121.94.31:5000/](http://209.121.94.31:5000/)
+TrumpBot is hosted on an external web server for live production use through both the browser client and Slack bot integration. You can access the most recent version of the chatbot hosted here: [http://50.98.99.115:5000/](http://50.98.99.115:5000/)
 
 ### CSV Data Pre-processing
 In order to allow customizable and efficient data entry for new responses, our chatbot uses a server-side CSV data file which is mapped to a response tree at runtime. By nesting responses in a tree structure, the chatbot can map user input to the appropriate response in a fraction of a second even with a large bank of possible responses.
@@ -58,7 +58,7 @@ Before any response mapping begins, the user input is first processed through a 
 ### Parts of Speech Analysis
 Once the input is spellchecked, the chatbot parses the list of input words and filters out relevant nouns and verbs for use in synonym mapping. This intermediate processing step is done for mapping optimization, to ensure that synonyms are only generated for key words in the sentence and the number of comparisons does not increase exponentially. As with spellchecking, words directly inputted by the user are never removed from the comparison in order to give users better control and avoid accidental mis-pruning.
 #### Demonstration
-Since this is an intermediate optimization step, it does not have a direct impact on the chatbot output but rather the performance. Check out [http://209.121.94.31:5000/](http://209.121.94.31:5000/) to experience the performance of TrumpBot yourself!
+Since this is an intermediate optimization step, it does not have a direct impact on the chatbot output but rather the performance. Check out [http://50.98.99.115:5000/](http://50.98.99.115:5000/) to experience the performance of TrumpBot yourself!
 
 ### Synonym Mapping
 The final step of input pre-processing is generating a list of synonyms from user input. This uses Parts of Speech and spellchecking to optimize performance and give the highest quality responses as consistently as possible. Each noun and verb is checked against a dictionary and any matched synonyms are added to the list of comparison words for the response mapping algorithm.
