@@ -30,8 +30,9 @@ As a whole, our application uses an asynchronous Client-Server architecture in w
   4. Ensure the required npm libraries are installed: `npm install`
   5. Start the client: `npm start`
   6. Navigate to the source directory: `cd src`
-  7. Start the server locally: `node server.js`
+  7. Start the back-end server locally: `node server.js`
   8. Build the program for production: `npm run build`
+  9. Start the front-end server: `serve -s build`
   
 ## Instructions for slack bot integration
   Part 1: Create a slack app
