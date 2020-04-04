@@ -122,7 +122,6 @@ function PrintTreeRecursive(node, level) {
 function GetResponse(inputText, lastResponse) {
   let responseList = [];
   let processedInput = ProcessInput(inputText);
-  console.log(processedInput);
 
   // determine the type of input (question or statement)
   let category = IsQuestion(inputText) ? 'q' : 's';
@@ -151,6 +150,10 @@ function GetResponse(inputText, lastResponse) {
     });
   }
 
+  // remove duplicate responses
+  let uniqueSet = new Set(responseList);
+  responseList = [...uniqueSet];
+
   // prevent repeating the last response we used if possible
   if (responseList.length > 1 && lastResponse !== undefined) {
     let idx = responseList.findIndex(data => {
@@ -175,6 +178,7 @@ function ProcessInput(txt) {
   let tokenizedString = TokenizeString(txt);
   let spellChecked = SpellcheckInput(tokenizedString);
   let synonyms = GetSynonyms(spellChecked);
+  console.log(synonyms);
   let result = spellChecked.concat(synonyms);
   return result.map(str => { return str.toLowerCase() });
 }
