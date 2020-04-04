@@ -69,56 +69,57 @@ Check out [this example file](testedoutput.txt) for sample output.
 ## Features
 ### Dynamic User Interface
 The TrumpBot features a beautiful interactive UI that mimics a messaging application. This includes a complete message history and animated messaging with simulated response delays to make the user feel as if Trump is really taking the time to type out a message.
-#### Demonstration
-![INSERT GIF HERE]()
+
+![UI Example](trumpBotUI.gif)
 
 ### External Web Hosting
 TrumpBot is hosted on an external web server for live production use through both the browser client and Slack bot integration. You can access the most recent version of the chatbot hosted here: [http://50.98.99.115:5000/](http://50.98.99.115:5000/)
 
 ### CSV Data Pre-processing
 In order to allow customizable and efficient data entry for new responses, our chatbot uses a server-side CSV data file which is mapped to a response tree at runtime. By nesting responses in a tree structure, the chatbot can map user input to the appropriate response in a fraction of a second even with a large bank of possible responses.
-#### Demonstration
-![Imgur](https://imgur.com/0q0dkVQ.png)
+
+![Pre-processing Example](csvToTreeConversion.png)
 
 ### Input Spellchecking
 Before any response mapping begins, the user input is first processed through a variety of natural language functions to improve the accuracy and breadth of possible responses. The first step in this input pre-processing is to spellcheck the user's input. The algorithm never *replaces* words in the user's input, in case a word was intentionally mis-spelled or was a proper noun not found in the English dictionary. Instead, it *adds* spelling corrections to the list of comparison words to increase the range of inputs that can be correctly mapped.
-#### Demonstration
-![INSERT IMAGE HERE]()
+
+![Spellchecking example](spellcheckExample.PNG)
 
 ### Parts of Speech Analysis
 Once the input is spellchecked, the chatbot parses the list of input words and filters out relevant nouns and verbs for use in synonym mapping. This intermediate processing step is done for mapping optimization, to ensure that synonyms are only generated for key words in the sentence and the number of comparisons does not increase exponentially. As with spellchecking, words directly inputted by the user are never removed from the comparison in order to give users better control and avoid accidental mis-pruning.
-#### Demonstration
+
 Since this is an intermediate optimization step, it does not have a direct impact on the chatbot output but rather the performance. Check out [http://50.98.99.115:5000/](http://50.98.99.115:5000/) to experience the performance of TrumpBot yourself!
 
 ### Synonym Mapping
 The final step of input pre-processing is generating a list of synonyms from user input. This uses Parts of Speech and spellchecking to optimize performance and give the highest quality responses as consistently as possible. Each noun and verb is checked against a dictionary and any matched synonyms are added to the list of comparison words for the response mapping algorithm.
-#### Demonstration
-![INSERT IMAGE HERE]()
+
+![Synonyms Example](synonymsExample.PNG)
+![Synonyms Example part 2](synonymsExample2.PNG)
 
 ### Question vs Statement Checks
 The response mapping algorithm first determines if the user's input is a question or a statement based on their use of question marks. It then uses that result to efficiently filter out appropriate responses to the user's input.
-#### Demonstration
-![INSERT IMAGE HERE]()
+
+![Question vs Statement example](questionStatementExample.PNG)
 
 ### Sentiment Analysis
 Once the chatbot has determined whether the user input is a question or a statement, it proceeds to analyze the sentiment of the input. This determination - whether it finds the result to be positive, negative or neutral - influences the response of the chatbot appropriately. TrumpBot doesn't like being insulted!
-#### Demonstration
-![INSERT IMAGE HERE]()
+
+![Sentiment Analysis example](sentimentExample.PNG)
 
 ### Categorized String Matching
 The key step of the response mapping algorithm is to take the pre-processed user input and map it to the question-and-sentiment-filtered sub-section of the response tree. In simple terms, the algorithm matches a list of words extended from the original user input to a list of possible responses. A response is then randomly chosen and returned from this list of possible matched responses.
-#### Demonstration
-![INSERT IMAGE HERE]()
+
+![Random matching example](randomExample.PNG)
 
 ### Over 100 Unique Responses and Dozens of Topics
 The TrumpBot offers a vast array of unique responses corresponding to a wide variety of topics relating to Donald Trump. These are carefully mapped to using natural word processing and a pre-generated response tree.
-#### Demonstration
+
 ![Example](https://i.imgur.com/Ldf14zS.png)
 
 ### Generic Response Mapping
 TrumpBot is designed to handle a variety of user input and can map a large range of possible inputs to a small set of outputs. However, it can still fail to find a suitable response. In this case, the TrumpBot defaults to a list of generic responses suited to a wide variety of unknown inputs.
-#### Demonstration
-![INSERT IMAGE HERE]()
+
+![Generic Response example](genericExample.PNG)
 
 ## Contributors
 
