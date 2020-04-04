@@ -153,11 +153,11 @@ TrumpBot is designed to handle a variety of user input and can map a large range
  - Added final WBS / Gantt chart to project document
  
 ### Michael Crouse
- - Researched chatbot algorithms
- - Created the sample conversation to build on
- - Created the initial text file for the output tree
- - Tested and prepared for the 30 turn conversation
- - Added GitHub commits by user to project document
+ - Researched and implemented NLP library
+ - Designed and implemented NLP input processing
+ - Tested input/output throughout
+ - Debugged issues as they were found
+ - Wrote csv for response mapping
  
 ### Shamus Boulianne
  - Researched chatbot algorithms
