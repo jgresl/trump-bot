@@ -167,26 +167,52 @@ TrumpBot is designed to handle a variety of user input and can map a large range
  - Implement component-based GUI
  - Connect GUI to message history
  - Add auto-scroll function to GUI
- - Test and troubleshoot new master branch
- - Test pre-processing for bugs
  - Provide level 0 DFD
  - Provide level 1 DFD
  - Finalize and submit documentation
- - Test and deploy final version on production server
+ - Deploy final version on production server
 
 ### Michael Crouse
+ **Assignment 2**
  - Researched and implemented NLP library
  - Designed and implemented NLP input processing
  - Tested input/output throughout
  - Debugged issues as they were found
  - Wrote csv for response mapping
+  
+ **Project**
+ - Research neural net/machine learning
+ - User input NLP pre-processing
+ - Implement natural functions server-side
+ - Design advanced response mapping
+ - Test natural functions server-side
+ - Add synonyms to language processing
+ - Add extra topic to agent repetoire
+ - Add 5 non-topic related responses
+ - Implement feature to handle spelling mistakes
+ - Walk through of each feature in README file
+ - Increase conversation repertoire / capability
+ - Add list of limitations to project document
+
  - Add Github link and commits by user
  
 ### Shamus Boulianne
+ **Assignment 2**
  - Researched chatbot algorithms
  - Implemented the text input processing
  - Implemented the text mapping algorithm
  - Built a basic text input and output
  - Implemented text output generation
+ 
+ **Project**
+ - Research natural NLP functionality and use
+ - Update isQuestion method
+ - Research slack integration procedure
+ - Implement Slack chat-bot integration
+ - Begin writing script
+ - Create and edit a 60 to 90 second video
+ - Description of the conversational topic
+ - Show each feature and how it adds to system
+ - Desciption of the data flow diagrams
 
 [Back to The Top](#cosc-310-software-engineering---project-2)
