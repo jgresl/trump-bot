@@ -242,10 +242,8 @@ function Ngrams(sentence) {
 
 function GetWordSynonyms(word) {
   let nSyns = synonyms(word, 'n') || [];
-  console.log(nSyns);
   let nSynsMax3 = nSyns.slice(0, 3);
   let vSyns = synonyms(word, 'v') || [];
-  console.log(nSyns);
   let vSynsMax3 = vSyns.slice(0, 3);
   return nSynsMax3.concat(vSynsMax3);
 }
