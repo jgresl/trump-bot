@@ -4,6 +4,7 @@
 - [Description](#description)
 - [Design Choices](#design-choices)
 - [Class Organization](#class-organization)
+- [Project Documentation](#project-documentation)
 - [Build Instructions](#build-instructions)
 - [Sample Output](#sample-output)
 - [Features](#features)
@@ -21,6 +22,9 @@ Our browser client interfaces with our Node.js server through a modern React imp
 React is a component-based framework. As such, our code was organized into Component files, which were then used in the main App.js file to define our dynamic state-based user interface. The App.js file encapsulates the full design and event functionality of the browser client.
 
 As a whole, our application uses an asynchronous Client-Server architecture in which the client sends Get messages to the server and awaits an asynchronous response. All of the response generation and input processing happens in the server.js file, which contains Express server hosting and Get handling code, as well as many helper methods interfacing with natural language libraries integrated through npm. We also define the TreeNode class here, used in the response tree datastructure.
+
+## Project Documentation
+See the project document including Gantt charts, WBS and much more [here](documentation/Project%20Document.pdf).
 
 ## Build instructions
 
