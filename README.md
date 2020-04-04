@@ -142,6 +142,7 @@ TrumpBot is designed to handle a variety of user input and can map a large range
  - Expanded response tree customization options
  - Designed advanced response mapping using natural language libraries
  - Test and integrate team code changes
+ - Update README.md and add feature images
  
 ### Jonathan Gresl
  **Assignment 2**
