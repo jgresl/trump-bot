@@ -144,6 +144,7 @@ TrumpBot is designed to handle a variety of user input and can map a large range
  - Test and integrate team code changes
  
 ### Jonathan Gresl
+ **Assignment 2**
  - Setup GitHub repository and invited group members
  - Created README template in GitHub
  - Setup Gantt chart to manage product and sprint backlogs
@@ -153,12 +154,28 @@ TrumpBot is designed to handle a variety of user input and can map a large range
  - Added SDLC phases and tasks to the project document
  - Added final WBS / Gantt chart to project document
  
+ **Project**
+ - Start advanced GUI
+ - Learn about React states and components
+ - Add scroll bar to chat UI
+ - Finalize UI message styling
+ - Implement component-based GUI
+ - Connect GUI to message history
+ - Add auto-scroll function to GUI
+ - Test and troubleshoot new master branch
+ - Test pre-processing for bugs
+ - Provide level 0 DFD
+ - Provide level 1 DFD
+ - Finalize and submit documentation
+ - Test and deploy final version on production server
+
 ### Michael Crouse
  - Researched and implemented NLP library
  - Designed and implemented NLP input processing
  - Tested input/output throughout
  - Debugged issues as they were found
  - Wrote csv for response mapping
+ - Add Github link and commits by user
  
 ### Shamus Boulianne
  - Researched chatbot algorithms
