@@ -193,7 +193,6 @@ TrumpBot is designed to handle a variety of user input and can map a large range
  - Walk through of each feature in README file
  - Increase conversation repertoire / capability
  - Add list of limitations to project document
-
  - Add Github link and commits by user
  
 ### Shamus Boulianne
