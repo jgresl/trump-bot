@@ -24,7 +24,7 @@ As a whole, our application uses an asynchronous Client-Server architecture in w
 
 ## Build instructions
 
-  1. Clone the project to a local repository: `git clone https://github.com/jgresl/cosc310.git`
+  1. Clone the project to a local repository: `git clone https://github.com/jgresl/trump-bot.git`
   2. Navigate to the project directory: `cd cosc310`
   3. Ensure node.js is installed: https://nodejs.org/en/
   4. Ensure the required npm libraries are installed: `npm install`
